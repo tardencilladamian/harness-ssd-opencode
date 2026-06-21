@@ -1,0 +1,32 @@
+{
+  "project": "PROJECT_NAME",
+  "description": "Short project description.",
+  "rules": {
+    "one_feature_at_a_time": true,
+    "require_tests_to_close": true,
+    "require_approved_spec_to_implement": true,
+    "valid_status": [
+      "pending",
+      "spec_ready",
+      "approved",
+      "in_progress",
+      "implemented",
+      "reviewed",
+      "done",
+      "blocked"
+    ]
+  },
+  "features": [
+    {
+      "id": "F-00",
+      "slug": "project-foundation",
+      "title": "Project foundation",
+      "description": "Create the initial project foundation, documentation, validation, and workflow.",
+      "priority": "P0",
+      "work_mode": "foundation",
+      "sdd": true,
+      "status": "pending"
+    }
+  ]
+}
+
