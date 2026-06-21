@@ -12,6 +12,19 @@ Replace with project-specific versions:
 - Package manager:
 - Database:
 - Browser/test tools:
+- Shell:
+
+## Windows Notes
+
+`scripts/verify.sh` requires Bash.
+
+On Windows, use one of:
+
+- Git Bash.
+- WSL.
+- A terminal where `bash` is available.
+
+If your project must support PowerShell-only workflows, create a project-specific `scripts/verify.ps1` and document it here.
 
 ## Setup
 
@@ -36,6 +49,7 @@ Replace with project-specific versions:
 | Command | Purpose |
 |---|---|
 | `bash scripts/verify.sh` | Run project verification |
+| `bash scripts/verify-project.sh` | Run project-specific checks when configured |
 
 ## Troubleshooting
 

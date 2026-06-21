@@ -15,7 +15,7 @@ The Implementer executes one approved feature according to its specification.
 
 - Read `AGENTS.md`.
 - Read `docs/workflow.md`.
-- Read relevant technical docs.
+- Read relevant technical docs based on the approved feature.
 - Read the full feature spec.
 - Execute tasks in order.
 - Keep changes scoped to the active feature.
@@ -33,6 +33,17 @@ The Implementer executes one approved feature according to its specification.
 - Resolve critical ambiguity by inventing rules.
 - Mark the feature `done`.
 - Commit without user approval.
+
+## Required Docs By Change Type
+
+| Change type | Required docs |
+|---|---|
+| Any implementation | `docs/architecture.md`, `docs/testing.md`, `docs/environment.md` |
+| Data changes | `docs/data-model.md`, `docs/security.md` |
+| API changes | `docs/api-contracts.md`, `docs/security.md` |
+| UI changes | `docs/ui-system.md`, `docs/testing.md` |
+| Auth/permissions/private data | `docs/security.md` |
+| Dependency changes | `docs/architecture.md`, `docs/decisions/` |
 
 ## Traceability
 
@@ -60,4 +71,3 @@ or
 ```text
 blocked -> progress/features/<FEATURE_ID_SLUG>.md
 ```
-

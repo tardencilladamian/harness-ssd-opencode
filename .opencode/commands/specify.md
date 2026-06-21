@@ -17,6 +17,7 @@ Follow:
 - Relevant project docs
 
 Before writing, confirm explicit authorization exists for the exact feature spec scope.
+
 Required output files:
 
 ```text

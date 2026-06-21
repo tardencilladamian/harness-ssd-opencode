@@ -196,6 +196,13 @@ pending -> spec_ready -> approved -> in_progress -> implemented -> reviewed -> d
 
 See `docs/workflow.md` for details.
 
+Allowed exceptional states:
+
+```text
+blocked
+cancelled
+```
+
 ## 9. Truth Priority
 
 When there is a conflict, prioritize:

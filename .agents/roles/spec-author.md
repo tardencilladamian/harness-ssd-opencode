@@ -24,7 +24,8 @@ progress/features/<FEATURE_ID_SLUG>.md
 
 - Read `AGENTS.md`.
 - Read `docs/workflow.md`.
-- Read relevant project docs.
+- Read `docs/index.md`.
+- Read relevant project docs based on the feature.
 - Read `features/index.json`.
 - Create verifiable requirements.
 - Create implementation design before code.
@@ -39,6 +40,18 @@ progress/features/<FEATURE_ID_SLUG>.md
 - Modify unrelated features.
 - Mark a feature `in_progress` or `done`.
 - Invent business rules when source documentation is missing.
+
+## Required Docs By Feature Type
+
+| Feature type | Required docs |
+|---|---|
+| Any SDD feature | `docs/workflow.md`, `docs/project-overview.md` |
+| Business/domain behavior | `docs/domain-model.md` |
+| Data persistence | `docs/data-model.md`, `docs/security.md` |
+| API behavior | `docs/api-contracts.md`, `docs/security.md` |
+| UI behavior | `docs/ui-system.md`, `docs/security.md` |
+| Architecture or dependency change | `docs/architecture.md`, `docs/decisions/` |
+| Verification planning | `docs/testing.md` |
 
 ## Specification Files
 
@@ -83,4 +96,3 @@ or
 ```text
 blocked -> progress/features/<FEATURE_ID_SLUG>.md
 ```
-

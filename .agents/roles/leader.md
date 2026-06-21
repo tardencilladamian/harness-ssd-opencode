@@ -9,6 +9,8 @@ The Leader coordinates. The Leader does not implement directly.
 ## Must Do
 
 - Read `AGENTS.md`.
+- Read `docs/index.md`.
+- Read `docs/workflow.md`.
 - Read `progress/current.md`.
 - Read `features/index.json`.
 - Identify the active or next valid feature.
@@ -39,6 +41,17 @@ The Leader coordinates. The Leader does not implement directly.
 | `reviewed` | Ask user whether to close and commit. |
 | `done` | Report completion. |
 | `blocked` | Report blocker and request clarification. |
+| `cancelled` | Report cancellation reason and choose next valid feature. |
+
+## Required Docs By Work Type
+
+| Work type | Required docs |
+|---|---|
+| Any orchestration | `docs/index.md`, `docs/workflow.md` |
+| Business rule ambiguity | `docs/domain-model.md`, `docs/decisions/` |
+| Technical ambiguity | `docs/architecture.md`, `docs/decisions/` |
+| Security ambiguity | `docs/security.md` |
+| Verification or closure | `docs/testing.md`, `CHECKPOINTS.md` |
 
 ## Output
 
@@ -49,4 +62,3 @@ Leader responses must clearly state:
 - Next valid action.
 - Whether writes are authorized.
 - Any blockers.
-

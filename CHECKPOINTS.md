@@ -11,6 +11,8 @@ Use this checklist before marking a feature as `done`.
 - [ ] `CHECKPOINTS.md` exists.
 - [ ] Neutral roles exist in `.agents/roles/`.
 - [ ] OpenCode adapters exist in `.opencode/`.
+- [ ] `scripts/verify.sh` exists and passes.
+- [ ] Project-specific checks are configured in `scripts/verify-project.sh` when applicable.
 
 ## C2 - State Coherence
 
@@ -18,6 +20,7 @@ Use this checklist before marking a feature as `done`.
 - [ ] The active feature in `features/index.json` matches `progress/current.md`.
 - [ ] The active feature has a progress file in `progress/features/`.
 - [ ] No feature skipped required lifecycle states.
+- [ ] Cancelled or blocked features include a documented reason.
 
 ## C3 - Specification Quality
 
@@ -65,3 +68,11 @@ Use this checklist before marking a feature as `done`.
 - [ ] `git status` reviewed.
 - [ ] `git diff` reviewed.
 - [ ] Commit approved by user before committing.
+
+## C8 - Template Instantiation
+
+- [ ] Project name placeholders were replaced.
+- [ ] Stack placeholders were replaced.
+- [ ] Domain/data/API/UI/security placeholders were reviewed.
+- [ ] `F-00` remains a completed reference feature or was intentionally removed.
+- [ ] First real project feature is defined.

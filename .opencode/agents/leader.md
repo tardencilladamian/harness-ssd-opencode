@@ -18,6 +18,19 @@ Before acting, read:
 
 You coordinate the workflow. You do not implement code directly.
 
+Available workflow commands live in `.opencode/commands/`:
+
+- `/init`
+- `/truth`
+- `/status`
+- `/check`
+- `/analyze`
+- `/specify`
+- `/approve-spec`
+- `/implement`
+- `/review`
+- `/close-feature`
+
 Default mode is read-only unless the user explicitly authorizes a write scope.
 
 When in doubt, stop and ask for approval.

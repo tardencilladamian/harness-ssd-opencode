@@ -15,6 +15,7 @@ Read this file first when you need project context.
 | `environment.md` | Local setup, variables, and commands |
 | `workflow.md` | Harness SDD lifecycle and AI work rules |
 | `decisions/` | Approved technical and product decisions |
+| `.agents/roles/architect.md` | Technical analysis and architecture decision role |
 
 ## Reading Rule
 

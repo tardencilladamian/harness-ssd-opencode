@@ -6,11 +6,11 @@ F-00 - Project Foundation
 
 ## Current Status
 
-pending
+done
 
 ## Last Updated
 
-YYYY-MM-DD
+2026-06-21
 
 ## Associated Spec
 
@@ -18,11 +18,18 @@ YYYY-MM-DD
 
 ## Completed Tasks
 
-None.
+- T01 - Create base Harness files.
+- T02 - Create documentation contracts.
+- T03 - Create feature index and sample feature spec.
+- T04 - Create progress tracking files.
+- T05 - Create neutral agent role contracts.
+- T06 - Create OpenCode agent and command adapters.
+- T07 - Create verification script.
+- T08 - Run verification and record evidence.
 
 ## Pending Tasks
 
-See `features/F-00-project-foundation/tasks.md`.
+None.
 
 ## Blockers
 
@@ -34,19 +41,19 @@ None.
 
 ## Changes Made
 
-Template files created.
+Template files created and verified.
 
 ## Tests Executed
 
-None yet.
+`bash scripts/verify.sh`
 
 ## Verification Result
 
-Pending.
+Passed with template placeholder warnings allowed by default.
 
 ## Review Result
 
-Not reviewed.
+Approved.
 
 ## Associated Commits
 
@@ -54,4 +61,4 @@ None.
 
 ## Notes To Continue
 
-Customize project docs and validation commands before real implementation work.
+Customize project docs and validation commands before real implementation work. Your first real project feature should usually start at `F-01`.

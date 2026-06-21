@@ -2,7 +2,7 @@
 
 ## Last Updated
 
-YYYY-MM-DD
+2026-06-21
 
 ## Active Feature
 
@@ -10,15 +10,15 @@ None
 
 ## Global Status
 
-Template initialized. Replace placeholders before active development.
+Template foundation is complete. Replace placeholders before active development.
 
 ## Last Completed Action
 
-Initial Harness SDD structure created.
+F-00 closed as a completed reference feature.
 
 ## Recommended Next Action
 
-Run `/truth` to analyze the repository and define the first real feature.
+Run `/init` to customize the template for your project, then run `/truth`.
 
 ## Global Blockers
 
@@ -40,8 +40,8 @@ None.
 
 | Feature | Status | Notes |
 |---|---|---|
-| F-00 Project Foundation | pending | Template sample feature |
+| F-00 Project Foundation | done | Completed reference feature |
 
 ## Notes For Next Session
 
-Read `AGENTS.md`, `features/index.json`, and this file before doing any work.
+Read `AGENTS.md`, `features/index.json`, and this file before doing any work. Your first real project feature should usually start at `F-01`.

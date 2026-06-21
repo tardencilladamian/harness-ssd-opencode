@@ -27,6 +27,35 @@ Use the levels that apply to this project:
 bash scripts/verify.sh
 ```
 
+## Project-Specific Verification
+
+Keep reusable Harness checks in:
+
+```text
+scripts/verify.sh
+```
+
+Put stack-specific checks in:
+
+```text
+scripts/verify-project.sh
+```
+
+Start by copying:
+
+```bash
+cp scripts/verify-project.sh.example scripts/verify-project.sh
+```
+
+Then add commands such as:
+
+```bash
+pnpm lint
+pnpm test
+pnpm build
+pnpm exec playwright test
+```
+
 ## Requirement Traceability
 
 Each SDD requirement must map to at least one test or explicit verification step.

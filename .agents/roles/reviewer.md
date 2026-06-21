@@ -30,6 +30,17 @@ The Reviewer does not edit code.
 - Approve if scope drift exists.
 - Approve if sensitive data is exposed.
 
+## Required Docs By Review Type
+
+| Review type | Required docs |
+|---|---|
+| Any review | `CHECKPOINTS.md`, `docs/workflow.md`, `docs/testing.md` |
+| Architecture review | `docs/architecture.md` |
+| Data review | `docs/data-model.md` |
+| API review | `docs/api-contracts.md` |
+| UI review | `docs/ui-system.md` |
+| Security/privacy review | `docs/security.md` |
+
 ## Review Result
 
 Use:
@@ -89,4 +100,3 @@ PASTE SUMMARY
 
 1. ...
 ```
-
