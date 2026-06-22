@@ -16,6 +16,7 @@ Read this file first when you need project context.
 | `workflow.md` | Harness SDD lifecycle and AI work rules |
 | `decisions/` | Approved technical and product decisions |
 | `.agents/roles/architect.md` | Technical analysis and architecture decision role |
+| `.agents/roles/auto-test.md` | Exhaustive feature testing role |
 
 ## Reading Rule
 

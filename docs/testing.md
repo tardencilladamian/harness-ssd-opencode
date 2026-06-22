@@ -21,6 +21,53 @@ Use the levels that apply to this project:
 - Migration tests.
 - Security/permission tests.
 
+## Auto Test Agent
+
+The `auto-test` agent is responsible for exhaustive feature verification after implementation and before review.
+
+It should test:
+
+- Project verification command.
+- Feature-specific tests.
+- Affected regression tests.
+- Happy paths.
+- Validation errors.
+- Permission and visibility rules.
+- Persistence behavior.
+- Browser/UI behavior when applicable.
+- Basic accessibility behavior when UI is involved.
+
+It must record:
+
+- Commands executed.
+- Results.
+- Evidence.
+- Failures.
+- Reproduction steps.
+- Limitations, such as unavailable browser tooling.
+
+It must not:
+
+- Fix code.
+- Approve the feature.
+- Mark the feature `done`.
+
+## Browser Testing With Playwright
+
+When a feature includes UI behavior and Playwright is available, `auto-test` must run browser tests in headed mode.
+
+Preferred commands:
+
+```bash
+pnpm exec playwright test --headed
+npx playwright test --headed
+npm exec playwright test -- --headed
+```
+
+Use the package manager and script conventions of the project. If the project defines a custom Playwright script, append `--headed` or document the equivalent headed-mode command.
+
+Headed mode is required for `auto-test` because the agent should observe real browser behavior and catch visual/runtime issues that are easy to miss in headless-only runs.
+
 ## Default Verification Command
 
 ```bash

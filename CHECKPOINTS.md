@@ -44,6 +44,8 @@ Use this checklist before marking a feature as `done`.
 ## C5 - Verification
 
 - [ ] Project verification command passes.
+- [ ] Auto Test was executed when applicable.
+- [ ] Auto Test evidence was recorded.
 - [ ] Feature-specific tests pass.
 - [ ] Happy path verified.
 - [ ] Validation errors verified.
@@ -53,6 +55,7 @@ Use this checklist before marking a feature as `done`.
 
 ## C6 - Review
 
+- [ ] Reviewer inspected Auto Test evidence when applicable.
 - [ ] Reviewer inspected requirements coverage.
 - [ ] Reviewer inspected tasks completion.
 - [ ] Reviewer inspected architecture compliance.

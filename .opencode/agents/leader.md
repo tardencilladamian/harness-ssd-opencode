@@ -28,6 +28,7 @@ Available workflow commands live in `.opencode/commands/`:
 - `/specify`
 - `/approve-spec`
 - `/implement`
+- `/auto-test`
 - `/review`
 - `/close-feature`
 

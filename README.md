@@ -23,6 +23,7 @@ pending
 -> approved
 -> in_progress
 -> implemented
+-> tested
 -> reviewed
 -> done
 ```
@@ -79,8 +80,19 @@ Then use `/truth` after the setup is customized.
 | `/specify F-XX` | Draft or update a feature spec |
 | `/approve-spec F-XX` | Mark a reviewed spec as approved |
 | `/implement F-XX` | Implement an approved feature |
+| `/auto-test F-XX` | Exhaustively test an implemented feature with real verification |
 | `/review F-XX` | Review implementation without editing |
 | `/close-feature F-XX` | Close a reviewed feature and prepare commit summary |
+
+## Browser Testing Rule
+
+When `/auto-test` tests UI behavior and Playwright is available, it must run Playwright in headed mode:
+
+```bash
+pnpm exec playwright test --headed
+```
+
+Use the project's package manager and equivalent command, but keep `--headed`.
 
 ## Core Rule
 

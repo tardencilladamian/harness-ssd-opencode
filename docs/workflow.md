@@ -135,6 +135,24 @@ Implementation must not begin until:
 2. The user has reviewed it.
 3. The user explicitly approves implementation.
 
+## Auto Test Phase
+
+After implementation and before review, run Auto Test when the feature affects behavior.
+
+Auto Test is responsible for exhaustive verification, not for approval.
+
+Auto Test must:
+
+- Run project verification.
+- Run feature-specific tests.
+- Run affected regression tests.
+- Use real browser checks when the feature includes UI and browser tooling is available.
+- Record evidence and failures in the feature progress file or an approved test report.
+
+If Auto Test fails, the feature returns to `in_progress` for fixes.
+
+The Reviewer should not review a feature with failed or missing Auto Test evidence unless the user explicitly waives that requirement.
+
 ## Resuming a Session
 
 When a session resumes after interruption, context compaction, crash, or a new day:

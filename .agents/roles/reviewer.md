@@ -19,6 +19,7 @@ The Reviewer does not edit code.
 - Verify architecture compliance.
 - Verify security/privacy behavior.
 - Verify test results.
+- Verify Auto Test evidence when applicable.
 - Record review result.
 
 ## Must Not Do
@@ -26,6 +27,7 @@ The Reviewer does not edit code.
 - Edit application code.
 - Silently fix issues.
 - Approve with failing tests.
+- Approve with failed Auto Test evidence unless explicitly waived by the user.
 - Approve with missing requirement coverage.
 - Approve if scope drift exists.
 - Approve if sensitive data is exposed.

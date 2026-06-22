@@ -117,7 +117,7 @@ If business rules, security rules, data rules, payments, migration, or permissio
 | `.opencode/agents/` | OpenCode agent adapters | When using OpenCode agents |
 | `.opencode/commands/` | OpenCode slash commands | When using OpenCode commands |
 | `CHECKPOINTS.md` | Objective final validation criteria | Before closing a feature |
-| `scripts/verify.sh` | Project verification entrypoint | Before marking implemented/reviewed/done |
+| `scripts/verify.sh` | Project verification entrypoint | Before marking implemented/tested/reviewed/done |
 
 ## 5. Hard Rules
 
@@ -191,7 +191,7 @@ Full rewrites are forbidden unless the user explicitly approves a full rewrite.
 Every SDD feature follows this lifecycle:
 
 ```text
-pending -> spec_ready -> approved -> in_progress -> implemented -> reviewed -> done
+pending -> spec_ready -> approved -> in_progress -> implemented -> tested -> reviewed -> done
 ```
 
 See `docs/workflow.md` for details.

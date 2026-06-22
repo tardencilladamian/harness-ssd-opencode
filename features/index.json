@@ -11,9 +11,11 @@
       "approved",
       "in_progress",
       "implemented",
+      "tested",
       "reviewed",
       "done",
-      "blocked"
+      "blocked",
+      "cancelled"
     ]
   },
   "features": [
@@ -29,4 +31,3 @@
     }
   ]
 }
-

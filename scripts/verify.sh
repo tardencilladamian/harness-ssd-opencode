@@ -118,6 +118,7 @@ valid = set(data.get("rules", {}).get("valid_status", [])) or {
     "approved",
     "in_progress",
     "implemented",
+    "tested",
     "reviewed",
     "done",
     "blocked",
@@ -132,8 +133,8 @@ in_progress = [f for f in features if f.get("status") == "in_progress"]
 if len(in_progress) > 1:
     raise SystemExit("[FAIL] More than one feature is in_progress")
 
-requires_spec = {"spec_ready", "approved", "in_progress", "implemented", "reviewed", "done"}
-requires_progress = {"spec_ready", "approved", "in_progress", "implemented", "reviewed", "done", "blocked"}
+requires_spec = {"spec_ready", "approved", "in_progress", "implemented", "tested", "reviewed", "done"}
+requires_progress = {"spec_ready", "approved", "in_progress", "implemented", "tested", "reviewed", "done", "blocked"}
 requires_review = {"reviewed", "done"}
 
 task_pattern = re.compile(r"^- \[( |x|X)\] T\d+", re.MULTILINE)
