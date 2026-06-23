@@ -17,6 +17,8 @@ Read this file first when you need project context.
 | `decisions/` | Approved technical and product decisions |
 | `.agents/roles/architect.md` | Technical analysis and architecture decision role |
 | `.agents/roles/auto-test.md` | Exhaustive feature testing role |
+| `.agents/roles/completion-checker.md` | Feature objective completion validation role |
+| `.agents/roles/code-refiner.md` | Behavior-preserving code quality refinement role |
 
 ## Reading Rule
 

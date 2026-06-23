@@ -46,6 +46,14 @@ Use this checklist before marking a feature as `done`.
 - [ ] Project verification command passes.
 - [ ] Auto Test was executed when applicable.
 - [ ] Auto Test evidence was recorded.
+- [ ] Completion Checker was executed when applicable.
+- [ ] Completion Checker evidence was recorded.
+- [ ] Completion Checker did not exceed 3 failed cycles.
+- [ ] If 3 cycles failed, a Completion Escalation Package was recorded.
+- [ ] If escalated, the new model started from the escalation package instead of restarting from scratch.
+- [ ] If Code Refiner ran, refinement evidence was recorded.
+- [ ] If Code Refiner ran, Auto Test passed again after refinement.
+- [ ] If Code Refiner ran, Completion Checker passed again after refinement.
 - [ ] Feature-specific tests pass.
 - [ ] Happy path verified.
 - [ ] Validation errors verified.
@@ -56,6 +64,8 @@ Use this checklist before marking a feature as `done`.
 ## C6 - Review
 
 - [ ] Reviewer inspected Auto Test evidence when applicable.
+- [ ] Reviewer inspected Completion Checker evidence when applicable.
+- [ ] Reviewer inspected Code Refiner evidence when applicable.
 - [ ] Reviewer inspected requirements coverage.
 - [ ] Reviewer inspected tasks completion.
 - [ ] Reviewer inspected architecture compliance.

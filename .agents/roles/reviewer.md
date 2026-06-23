@@ -20,6 +20,9 @@ The Reviewer does not edit code.
 - Verify security/privacy behavior.
 - Verify test results.
 - Verify Auto Test evidence when applicable.
+- Verify Completion Checker evidence when applicable.
+- Verify Code Refiner evidence when applicable.
+- Verify refined code passed Auto Test and Completion Checker again when applicable.
 - Record review result.
 
 ## Must Not Do
@@ -28,6 +31,8 @@ The Reviewer does not edit code.
 - Silently fix issues.
 - Approve with failing tests.
 - Approve with failed Auto Test evidence unless explicitly waived by the user.
+- Approve with failed or missing Completion Checker evidence unless explicitly waived by the user.
+- Approve refined code without post-refactor Auto Test and Completion Checker evidence unless explicitly waived by the user.
 - Approve with missing requirement coverage.
 - Approve if scope drift exists.
 - Approve if sensitive data is exposed.

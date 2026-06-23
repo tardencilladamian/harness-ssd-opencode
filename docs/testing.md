@@ -52,6 +52,49 @@ It must not:
 - Approve the feature.
 - Mark the feature `done`.
 
+## Completion Checker
+
+The `completion-checker` agent runs after Auto Test and before Reviewer.
+
+It validates that the tested feature actually achieves:
+
+- Feature purpose.
+- User outcome.
+- Requirements.
+- Acceptance criteria.
+- Approved design intent.
+
+If it finds gaps, it gives precise correction instructions to Implementer.
+
+After Implementer fixes the gaps, Auto Test must run again before Completion Checker runs again.
+
+Completion Checker is limited to 3 failed cycles. If the third failed cycle still does not satisfy the feature objective, the workflow must stop and notify the user to consider switching to a higher-capability AI model before spending more AI budget.
+
+When that happens, Completion Checker must create a Completion Escalation Package. After switching models, resume with:
+
+```text
+/escalate-completion <FEATURE_ID>
+```
+
+The escalated model must read the package and propose a correction plan before making changes.
+
+## Code Refiner
+
+The `code-refiner` agent may run after Auto Test and Completion Checker pass.
+
+It improves internal code quality without changing behavior.
+
+After Code Refiner runs, the feature must pass:
+
+```text
+/auto-test <FEATURE_ID>
+/completion-check <FEATURE_ID>
+```
+
+again before Reviewer.
+
+If either fails, the feature returns to implementation or refinement according to the failure.
+
 ## Browser Testing With Playwright
 
 When a feature includes UI behavior and Playwright is available, `auto-test` must run browser tests in headed mode.
@@ -119,6 +162,9 @@ Example:
 A feature is not complete unless:
 
 - Tests pass.
+- Auto Test passed when applicable.
+- Completion Checker passed when applicable.
+- If Code Refiner ran, post-refactor Auto Test and Completion Checker passed.
 - Verification output is recorded.
 - Requirement traceability exists.
 - Review is complete.

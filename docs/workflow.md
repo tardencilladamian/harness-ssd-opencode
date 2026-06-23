@@ -26,6 +26,11 @@ pending
 -> approved
 -> in_progress
 -> implemented
+-> tested
+-> completion_checked
+-> code_refined
+-> tested
+-> completion_checked
 -> reviewed
 -> done
 ```
@@ -37,6 +42,9 @@ pending
 | `approved` | Human approved the spec |
 | `in_progress` | Implementation is active |
 | `implemented` | Code and tests are complete |
+| `tested` | Auto Test completed exhaustive verification and recorded evidence |
+| `completion_checked` | Completion Checker confirmed the tested feature achieves its approved objective |
+| `code_refined` | Code Refiner improved code quality without intended behavior changes |
 | `reviewed` | Reviewer approved the implementation |
 | `done` | Feature is closed with documentation and commit |
 | `blocked` | Work cannot continue without clarification or external change |
@@ -63,7 +71,12 @@ Forward motion is preferred, but real projects need controlled rollback.
 |---|---|---|
 | Spec needs changes before approval | `spec_ready -> pending` | Record why the spec was reopened |
 | Implementation reveals missing requirements | `in_progress -> blocked -> spec_ready` | Update spec before coding further |
-| Review requests implementation fixes | `implemented -> in_progress` | Keep same spec if changes are within scope |
+| Review requests implementation fixes | `tested -> in_progress` or `implemented -> in_progress` | Keep same spec if changes are within scope |
+| Auto Test finds failures | `tested -> in_progress` or `implemented -> in_progress` | Implementer fixes issues, then Auto Test runs again |
+| Completion Checker finds gaps | `completion_checked -> in_progress` or `tested -> in_progress` | Implementer fixes objective gaps, then Auto Test and Completion Checker run again |
+| Completion Checker fails 3 cycles | `tested -> blocked` | Stop and recommend switching to a higher-capability AI model before more AI budget is spent |
+| Code Refiner changes behavior accidentally | `code_refined -> in_progress` | Implementer restores intended behavior or fixes regression, then Auto Test and Completion Checker run again |
+| Code refinement is too risky | `completion_checked -> reviewed` | Skip refinement and document why |
 | Review reveals spec gap | `implemented -> blocked -> spec_ready` | Update requirements/design/tasks |
 | Feature is abandoned | `pending/spec_ready/approved/in_progress -> cancelled` | Record reason in progress file |
 | Completed feature needs new behavior | `done -> new feature` | Do not reopen done features for new scope |
@@ -152,6 +165,89 @@ Auto Test must:
 If Auto Test fails, the feature returns to `in_progress` for fixes.
 
 The Reviewer should not review a feature with failed or missing Auto Test evidence unless the user explicitly waives that requirement.
+
+
+## Completion Checker Phase
+
+After Auto Test passes and before Reviewer runs, run Completion Checker.
+
+Completion Checker validates that the tested feature fully achieves:
+
+- The feature purpose.
+- The intended user outcome.
+- Every approved requirement.
+- Every acceptance criterion.
+- The behavior implied by the approved design.
+
+Completion Checker must not implement fixes and must not approve the feature.
+
+If the feature is incomplete, Completion Checker returns precise correction instructions for Implementer. After Implementer fixes the issue, Auto Test must run again before another Completion Checker cycle.
+
+Completion Checker is limited to 3 failed cycles per feature.
+
+If the third failed cycle still does not achieve the objective:
+
+1. Stop the loop.
+2. Mark or recommend the feature as `blocked`.
+3. Notify the user that the current AI model may be insufficient.
+4. Recommend switching to a higher-capability model before spending more AI budget.
+5. Record the remaining gaps and the failed cycle count.
+6. Write a Completion Escalation Package.
+7. Tell the user to switch models and run `/escalate-completion <FEATURE_ID>`.
+
+The Reviewer should not review a feature with failed or missing Completion Checker evidence unless the user explicitly waives that requirement.
+
+## Escalated Completion
+
+When a feature is blocked after 3 failed Completion Checker cycles, a higher-capability model should resume with:
+
+```text
+/escalate-completion <FEATURE_ID>
+```
+
+The escalated model must:
+
+1. Start in read-only mode.
+2. Read the Completion Escalation Package.
+3. Read the feature spec, progress file, Auto Test evidence, and failed-cycle summaries.
+4. Identify why the previous cycles failed.
+5. Classify the root cause as implementation gap, spec ambiguity, architecture issue, missing tests, wrong approach, or model limitation.
+6. Propose the smallest correction plan.
+7. Wait for user approval before any writes.
+
+If the issue is spec ambiguity, the feature should return to `spec_ready` for clarification instead of forcing more implementation attempts.
+
+## Code Refiner Phase
+
+After a feature passes Auto Test and Completion Checker, Code Refiner may run before Reviewer.
+
+Code Refiner improves internal quality without changing behavior:
+
+- Readability.
+- Maintainability.
+- Structure.
+- Type safety.
+- Error handling.
+- Security posture.
+- Test clarity.
+- Removal of unnecessary duplication.
+
+Code Refiner must:
+
+1. Start with a refactor plan.
+2. Wait for user approval before editing.
+3. Stay within the approved feature scope.
+4. Preserve behavior exactly.
+5. Avoid dependency, stack, schema, or public API changes unless explicitly approved.
+6. Record what changed and why.
+
+After Code Refiner runs, the feature must go back through:
+
+```text
+code_refined -> tested -> completion_checked -> reviewed
+```
+
+The Reviewer should not review a refined feature until Auto Test and Completion Checker pass again, unless the user explicitly waives that requirement.
 
 ## Resuming a Session
 

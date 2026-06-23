@@ -3,7 +3,7 @@ description: Exhaustively test an implemented feature with real verification
 agent: auto-test
 ---
 
-# Exhaustively test this feature:
+# Exhaustively test this feature
 
 ```text
 $ARGUMENTS

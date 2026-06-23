@@ -19,3 +19,24 @@ Do not edit previous entries. Add new entries at the end.
 - Scope: Added `auto-test` neutral role, OpenCode adapter, `/auto-test` command, lifecycle state `tested`, and verification/review documentation.
 - Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
 - Result: Template supports exhaustive feature testing before review.
+
+## 2026-06-23 - Completion Checker Role Added
+
+- Agent: AI
+- Scope: Added `completion-checker` neutral role, OpenCode adapter, `/completion-check` command, lifecycle state `completion_checked`, and 3-cycle model-escalation rule.
+- Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
+- Result: Template supports objective completion validation between Auto Test and Reviewer.
+
+## 2026-06-23 - Escalated Completion Command Added
+
+- Agent: AI
+- Scope: Added `/escalate-completion` command and Completion Escalation Package rules for handing off failed completion loops to a higher-capability model.
+- Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
+- Result: Template supports controlled model escalation after 3 failed completion-check cycles.
+
+## 2026-06-23 - Code Refiner Role Added
+
+- Agent: AI
+- Scope: Added `code-refiner` neutral role, OpenCode adapter, `/refine-code` command, lifecycle state `code_refined`, and post-refactor retest requirements.
+- Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
+- Result: Template supports behavior-preserving code quality refinement before final review.

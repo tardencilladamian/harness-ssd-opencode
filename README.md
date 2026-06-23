@@ -24,6 +24,10 @@ pending
 -> in_progress
 -> implemented
 -> tested
+-> completion_checked
+-> code_refined
+-> tested
+-> completion_checked
 -> reviewed
 -> done
 ```
@@ -81,6 +85,9 @@ Then use `/truth` after the setup is customized.
 | `/approve-spec F-XX` | Mark a reviewed spec as approved |
 | `/implement F-XX` | Implement an approved feature |
 | `/auto-test F-XX` | Exhaustively test an implemented feature with real verification |
+| `/completion-check F-XX` | Confirm the tested feature fully achieves its approved objective |
+| `/escalate-completion F-XX` | Resume a blocked completion check with a higher-capability model |
+| `/refine-code F-XX` | Refactor completed feature code without changing behavior |
 | `/review F-XX` | Review implementation without editing |
 | `/close-feature F-XX` | Close a reviewed feature and prepare commit summary |
 
@@ -93,6 +100,36 @@ pnpm exec playwright test --headed
 ```
 
 Use the project's package manager and equivalent command, but keep `--headed`.
+
+## Completion Check Rule
+
+After `/auto-test` passes, run `/completion-check` before `/review`.
+
+`completion-checker` verifies that the feature actually achieves its approved purpose, requirements, acceptance criteria, and intended user outcome.
+
+If the feature is incomplete, it returns precise instructions for `implementer`. After fixes, run `/auto-test` again before another `/completion-check`.
+
+The loop is limited to 3 failed completion-check cycles. If the third cycle still fails, stop and consider switching to a higher-capability AI model before spending more budget.
+
+After switching models, run:
+
+```text
+/escalate-completion F-XX
+```
+
+The new model must read the escalation package, identify why the previous cycles failed, and propose a correction plan before making changes.
+
+## Code Refinement Rule
+
+After a feature passes `/auto-test` and `/completion-check`, you may run:
+
+```text
+/refine-code F-XX
+```
+
+`code-refiner` improves code quality without changing behavior. It must propose a refactor plan before editing.
+
+After refinement, run `/auto-test` and `/completion-check` again before `/review`.
 
 ## Core Rule
 

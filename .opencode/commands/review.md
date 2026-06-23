@@ -24,6 +24,10 @@ Rules:
 
 - Do not edit code.
 - Do not fix issues.
+- Inspect Auto Test evidence when applicable.
+- Inspect Completion Checker evidence when applicable.
+- Inspect Code Refiner evidence when applicable.
+- If code was refined, verify Auto Test and Completion Checker passed again after refinement.
 - Verify requirement-to-test traceability.
 - Verify tasks are complete.
 - Verify architecture compliance.

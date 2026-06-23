@@ -26,8 +26,8 @@ None.
 
 ## Open Risks
 
-- Project-specific validation commands are not configured yet.
-- Product-specific documentation is not filled yet.
+- Project-specific validation commands may not be configured yet.
+- Product-specific documentation may still contain placeholders.
 
 ## Pending Decisions
 

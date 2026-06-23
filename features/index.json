@@ -12,6 +12,8 @@
       "in_progress",
       "implemented",
       "tested",
+      "completion_checked",
+      "code_refined",
       "reviewed",
       "done",
       "blocked",

@@ -191,7 +191,7 @@ Full rewrites are forbidden unless the user explicitly approves a full rewrite.
 Every SDD feature follows this lifecycle:
 
 ```text
-pending -> spec_ready -> approved -> in_progress -> implemented -> tested -> reviewed -> done
+pending -> spec_ready -> approved -> in_progress -> implemented -> tested -> completion_checked -> code_refined -> tested -> completion_checked -> reviewed -> done
 ```
 
 See `docs/workflow.md` for details.

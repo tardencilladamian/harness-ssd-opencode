@@ -37,11 +37,16 @@ The Leader coordinates. The Leader does not implement directly.
 | `spec_ready` | Stop and ask human to review/approve spec. |
 | `approved` | Ask for implementation authorization. |
 | `in_progress` | Resume or coordinate Implementer. |
-| `implemented` | Invoke Reviewer. |
+| `implemented` | Invoke Auto Test when applicable, otherwise ask whether to run Completion Checker. |
+| `tested` | Invoke Completion Checker. |
+| `completion_checked` | Ask whether Code Refiner should run; otherwise invoke Reviewer. |
+| `code_refined` | Invoke Auto Test again. |
 | `reviewed` | Ask user whether to close and commit. |
 | `done` | Report completion. |
 | `blocked` | Report blocker and request clarification. |
 | `cancelled` | Report cancellation reason and choose next valid feature. |
+
+If a feature is blocked with `blocked_model_escalation_recommended`, ask the user to switch to a higher-capability model and run `/escalate-completion <FEATURE_ID>`.
 
 ## Required Docs By Work Type
 
@@ -52,6 +57,10 @@ The Leader coordinates. The Leader does not implement directly.
 | Technical ambiguity | `docs/architecture.md`, `docs/decisions/` |
 | Security ambiguity | `docs/security.md` |
 | Verification or closure | `docs/testing.md`, `CHECKPOINTS.md` |
+| Auto testing | `docs/testing.md`, `docs/environment.md`, active feature spec |
+| Completion checking | `docs/workflow.md`, active feature spec, Auto Test evidence |
+| Escalated completion | `docs/workflow.md`, Completion Escalation Package, active feature spec, Auto Test evidence |
+| Code refinement | `docs/architecture.md`, `docs/security.md`, `docs/testing.md`, active feature spec |
 
 ## Output
 
