@@ -2,7 +2,7 @@
 
 ## Last Updated
 
-2026-06-21
+2026-06-23
 
 ## Active Feature
 
@@ -10,15 +10,15 @@ None
 
 ## Global Status
 
-Template foundation is complete. Replace placeholders before active development.
+Reusable Harness template is ready. Real project foundation has not been completed yet.
 
 ## Last Completed Action
 
-F-00 closed as a completed reference feature.
+Template upgraded so F-00 is now the first real project foundation feature, not a demo.
 
 ## Recommended Next Action
 
-Run `/init` to customize the template for your project, then run `/truth`.
+Run `/init`, then `/truth`, then prepare F-00 project foundation for approval and implementation.
 
 ## Global Blockers
 
@@ -34,14 +34,14 @@ None.
 - Project stack.
 - Test strategy.
 - Deployment target.
-- First real feature.
+- F-00 implementation scope for the real project.
 
 ## Feature Summary
 
 | Feature | Status | Notes |
 |---|---|---|
-| F-00 Project Foundation | done | Completed reference feature |
+| F-00 Project Foundation | pending | First real project foundation feature |
 
 ## Notes For Next Session
 
-Read `AGENTS.md`, `features/index.json`, and this file before doing any work. Your first real project feature should usually start at `F-01`.
+Read `AGENTS.md`, `features/index.json`, and this file before doing any work. Product features should usually start at `F-01` after F-00 is completed.

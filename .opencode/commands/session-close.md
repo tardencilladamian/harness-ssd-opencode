@@ -3,7 +3,7 @@ description: Close the current work session without committing automatically
 agent: leader
 ---
 
-# Close the current Harness session:
+# Close the current Harness session
 
 ```text
 $ARGUMENTS

@@ -60,9 +60,10 @@ cp harness.config.example.json harness.config.json
    - `features/index.json`
    - `progress/current.md`
    - `progress/history.md`
-5. Keep `F-00-project-foundation` as a completed reference feature.
-   - It shows how a complete feature spec/progress/review should look.
-   - Your first real project feature should usually start at `F-01`.
+5. Use `F-00-project-foundation` as the first real project foundation feature.
+   - It adapts the template into the real project.
+   - It should configure the stack, docs, verification, environment, and initial scaffold when approved.
+   - Product features should usually start at `F-01` after F-00 is complete.
 6. Add project-specific checks in `scripts/verify-project.sh`.
    - Keep `scripts/verify.sh` as the reusable Harness verification entrypoint.
    - Use `scripts/verify-project.sh` for stack-specific commands such as `pnpm test`, `pytest`, or `go test ./...`.
@@ -125,6 +126,8 @@ bash scripts/new-feature.sh F-01 "Feature title"
 ```
 
 to create a new feature folder from `features/_template/`.
+
+`F-00-project-foundation` already exists because every real project needs a foundation feature. Do not treat it as a demo; implement it as part of the app setup.
 
 ## Quality Gates
 

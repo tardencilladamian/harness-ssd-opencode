@@ -3,7 +3,7 @@ description: Guided setup for a new project using this template
 agent: leader
 ---
 
-# Guide the user through initializing this Harness SDD OpenCode template for a real project
+# Guide the user through initializing this Harness SDD OpenCode template for a real project.
 
 Follow:
 
@@ -39,6 +39,7 @@ Process:
 6. Wait for approval before writing.
 7. After approved updates, run `bash scripts/verify.sh`.
 8. Recommend `/truth` as the next command.
+9. Recommend preparing `F-00-project-foundation` before creating product features.
 
 Model recommendation:
 

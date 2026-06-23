@@ -27,21 +27,21 @@
       "id": "F-00",
       "slug": "project-foundation",
       "title": "Project foundation",
-      "description": "Create the initial project foundation, documentation, validation, and workflow.",
+      "description": "Adapt the reusable Harness template into the real project foundation.",
       "priority": "P0",
       "work_mode": "foundation",
       "sdd": true,
-      "status": "done",
+      "status": "pending",
       "depends_on": [],
-      "quality_gate": "standard",
+      "quality_gate": "critical",
       "slice": {
         "documentation": true,
         "configuration": true,
-        "database": false,
-        "api": false,
-        "ui": false,
+        "database": "project-dependent",
+        "api": "project-dependent",
+        "ui": "project-dependent",
         "tests": true,
-        "security": false
+        "security": true
       },
       "models": {
         "spec": "not-recorded",

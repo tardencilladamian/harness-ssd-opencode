@@ -42,7 +42,7 @@ The project-adapted layer is:
 3. Replace placeholders in project docs.
 4. Create `scripts/verify-project.sh` from `scripts/verify-project.sh.example`.
 5. Run `bash scripts/verify.sh`.
-6. Create the first real feature from `features/_template/`.
+6. Prepare `F-00-project-foundation` as the first real project foundation feature.
 7. Use `/truth` before starting implementation.
 
 ## Command Adaptation
@@ -52,6 +52,8 @@ The project-adapted layer is:
 `/truth` should report whether the project is still in template mode and which setup gaps remain.
 
 `/specify` should read `harness.config.json`, `docs/quality-gates.md`, and the relevant project docs before drafting feature specs.
+
+F-00 already exists and should be used for real foundation work. Use `features/_template/` for F-01 and later features.
 
 `/check` should run `scripts/verify.sh`, which delegates project-specific checks to `scripts/verify-project.sh` when present.
 

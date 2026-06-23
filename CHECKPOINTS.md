@@ -94,7 +94,7 @@ Use this checklist before marking a feature as `done`.
 - [ ] Project name placeholders were replaced.
 - [ ] Stack placeholders were replaced.
 - [ ] Domain/data/API/UI/security placeholders were reviewed.
-- [ ] `F-00` remains a completed reference feature or was intentionally removed.
+- [ ] `F-00` is used as the real project foundation feature or was intentionally replaced.
 - [ ] `harness.config.json` was created from `harness.config.example.json` when the real project starts.
 - [ ] `features/_template/` exists for future features.
 - [ ] First real project feature is defined.

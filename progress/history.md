@@ -47,3 +47,10 @@ Do not edit previous entries. Add new entries at the end.
 - Scope: Added adaptive setup docs, quality gates, `harness.config.example.json`, feature templates, session logs, feature dependency/slice metadata, `/new-feature`, `/session-close`, and stronger verification checks.
 - Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
 - Result: Template supports reusable startup for any new project while adapting progressively through Harness commands.
+
+## 2026-06-23 - F-00 Converted To Real Foundation Feature
+
+- Agent: AI
+- Scope: Changed `F-00-project-foundation` from completed reference feature to the first real project foundation feature.
+- Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
+- Result: New projects begin with F-00 as pending foundation work; `features/_template/` is the reusable reference structure.

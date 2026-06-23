@@ -6,11 +6,11 @@ F-00 - Project Foundation
 
 ## Current Status
 
-done
+pending
 
 ## Last Updated
 
-2026-06-21
+2026-06-23
 
 ## Associated Spec
 
@@ -18,18 +18,18 @@ done
 
 ## Completed Tasks
 
-- T01 - Create base Harness files.
-- T02 - Create documentation contracts.
-- T03 - Create feature index and sample feature spec.
-- T04 - Create progress tracking files.
-- T05 - Create neutral agent role contracts.
-- T06 - Create OpenCode agent and command adapters.
-- T07 - Create verification script.
-- T08 - Run verification and record evidence.
+None.
 
 ## Pending Tasks
 
-None.
+- T01 - Create `harness.config.json` from `harness.config.example.json` with real project values.
+- T02 - Replace placeholders in project-owned documentation.
+- T03 - Configure `scripts/verify-project.sh` with real commands or documented setup limitations.
+- T04 - Create the approved initial project/app structure for the selected stack when applicable.
+- T05 - Configure environment examples and local setup documentation.
+- T06 - Run Harness and project verification.
+- T07 - Record evidence, progress, blockers, and next action.
+- T08 - Prepare review and closure evidence without committing until the user approves.
 
 ## Blockers
 
@@ -38,22 +38,24 @@ None.
 ## Risks
 
 - Project-specific commands still need to be configured.
+- Project stack may still be undecided.
+- App scaffold must not be created until the F-00 implementation scope is explicitly approved.
 
 ## Changes Made
 
-Template files created and verified.
+Reusable template includes the F-00 spec, but the real project foundation has not been implemented yet.
 
 ## Tests Executed
 
-`bash scripts/verify.sh`
+None for the real project foundation.
 
 ## Verification Result
 
-Passed with template placeholder warnings allowed by default.
+Pending.
 
 ## Review Result
 
-Approved.
+Pending.
 
 ## Associated Commits
 
@@ -61,4 +63,4 @@ None.
 
 ## Notes To Continue
 
-Customize project docs and validation commands before real implementation work. Your first real project feature should usually start at `F-01`.
+Run `/init`, then `/truth`, then prepare and approve F-00 before implementing product features.

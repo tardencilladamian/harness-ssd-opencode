@@ -29,11 +29,7 @@
       "model": "replace-with-cost-efficient-model"
     },
     "reviewer": {
-      "recommended_for": [
-        "review",
-        "security_review",
-        "release_gate"
-      ],
+      "recommended_for": ["review", "security_review", "release_gate"],
       "model": "replace-with-high-capability-model"
     }
   },

@@ -3,7 +3,7 @@ description: Create a new feature folder from the reusable feature template
 agent: leader
 ---
 
-# Prepare a new Harness feature:
+# Prepare a new Harness feature
 
 ```text
 $ARGUMENTS

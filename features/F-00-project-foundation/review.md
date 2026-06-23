@@ -2,16 +2,20 @@
 
 ## Verdict
 
-APPROVED
+PENDING
 
 ## Reviewer Checklist
 
-- [x] Requirements are verifiable.
-- [x] Design matches repository structure.
-- [x] Tasks are small and traceable.
-- [x] Verification command exists.
-- [x] Agent roles are neutral.
-- [x] OpenCode adapters do not contradict neutral roles.
+- [ ] Requirements are verifiable.
+- [ ] Design matches the real project stack and approved foundation scope.
+- [ ] Tasks are complete.
+- [ ] `harness.config.json` exists with real project values.
+- [ ] Project docs were adapted or explicitly deferred.
+- [ ] Verification commands exist or limitations are documented.
+- [ ] `bash scripts/verify.sh` passed.
+- [ ] `scripts/verify-project.sh` passed when available.
+- [ ] Progress and evidence were updated.
+- [ ] Git status and diff summary were reviewed when Git is available.
 
 ## Verification
 
@@ -19,4 +23,4 @@ APPROVED
 bash scripts/verify.sh
 ```
 
-Result: passed with template placeholder warnings allowed by default.
+Result: pending.

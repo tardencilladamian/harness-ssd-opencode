@@ -3,7 +3,7 @@ description: Read-only repository truth analysis
 agent: leader
 ---
 
-# Run a read-only truth analysis for this repository
+# Run a read-only truth analysis for this repository.
 
 Follow `AGENTS.md` and `.agents/roles/leader.md`.
 
@@ -21,6 +21,7 @@ Rules:
 - Report the active feature, current state, blockers, risks, and next valid action.
 - Report whether the project is still in template mode.
 - Report whether feature dependencies or quality-gate metadata are missing.
+- If F-00 is still `pending`, recommend completing F-00 before product features.
 
 If arguments are provided, focus the analysis on:
 
