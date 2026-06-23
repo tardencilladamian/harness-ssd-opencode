@@ -14,6 +14,8 @@ Read this file first when you need project context.
 | `testing.md` | Test strategy and verification commands |
 | `environment.md` | Local setup, variables, and commands |
 | `workflow.md` | Harness SDD lifecycle and AI work rules |
+| `adaptation.md` | How the reusable template becomes a project-specific Harness |
+| `quality-gates.md` | Rules for light, standard, and critical workflow intensity |
 | `decisions/` | Approved technical and product decisions |
 | `.agents/roles/architect.md` | Technical analysis and architecture decision role |
 | `.agents/roles/auto-test.md` | Exhaustive feature testing role |

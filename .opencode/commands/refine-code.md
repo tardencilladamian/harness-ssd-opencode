@@ -16,6 +16,7 @@ Follow:
 - `docs/architecture.md`
 - `docs/security.md`
 - `docs/testing.md`
+- `docs/quality-gates.md`
 - Relevant feature spec files
 - Relevant feature progress file
 - Auto Test evidence
@@ -32,6 +33,7 @@ Rules:
 - Keep changes scoped to the active feature.
 - If refactoring is not useful or is too risky, say so and recommend skipping it.
 - After refactoring, require Auto Test and Completion Checker again before Reviewer.
+- For light-flow features, recommend skipping refinement unless there is obvious maintainability or safety value.
 
 Return:
 
@@ -44,3 +46,7 @@ or:
 ```text
 refactor_not_recommended -> progress/features/<FEATURE_ID_SLUG>.md
 ```
+
+Model recommendation:
+
+- Use a stronger model for critical refactors. Use a cost-efficient model for small, behavior-preserving cleanup only when the refactor plan is explicit.

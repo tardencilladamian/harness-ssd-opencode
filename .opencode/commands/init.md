@@ -11,6 +11,8 @@ Follow:
 - `.agents/roles/leader.md`
 - `README.md`
 - `docs/workflow.md`
+- `docs/adaptation.md`
+- `docs/quality-gates.md`
 
 Rules:
 
@@ -22,9 +24,10 @@ Rules:
 
 Process:
 
-1. Read `features/index.json`, `progress/current.md`, and `README.md`.
+1. Read `features/index.json`, `progress/current.md`, `README.md`, and `harness.config.example.json`.
 2. Check for placeholders in docs, features, and progress files.
-3. Ask the user for missing project basics:
+3. Check whether `harness.config.json` exists and whether it has project-specific values.
+4. Ask the user for missing project basics:
    - Project name.
    - Short description.
    - Primary users.
@@ -32,7 +35,11 @@ Process:
    - Database/storage.
    - Testing commands.
    - First real feature ID and title.
-4. Propose exact files to update.
-5. Wait for approval before writing.
-6. After approved updates, run `bash scripts/verify.sh`.
-7. Recommend `/truth` as the next command.
+5. Propose exact files to update, including whether to create `harness.config.json` from `harness.config.example.json`.
+6. Wait for approval before writing.
+7. After approved updates, run `bash scripts/verify.sh`.
+8. Recommend `/truth` as the next command.
+
+Model recommendation:
+
+- Use a high-capability model for setup because project assumptions and architecture choices are still ambiguous.

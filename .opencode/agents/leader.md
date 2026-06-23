@@ -25,6 +25,7 @@ Available workflow commands live in `.opencode/commands/`:
 - `/status`
 - `/check`
 - `/analyze`
+- `/new-feature`
 - `/specify`
 - `/approve-spec`
 - `/implement`
@@ -34,6 +35,7 @@ Available workflow commands live in `.opencode/commands/`:
 - `/refine-code`
 - `/review`
 - `/close-feature`
+- `/session-close`
 
 Default mode is read-only unless the user explicitly authorizes a write scope.
 

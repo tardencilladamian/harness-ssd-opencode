@@ -15,6 +15,7 @@ Follow:
 - `.agents/roles/reviewer.md`
 - `CHECKPOINTS.md`
 - `docs/workflow.md`
+- `docs/quality-gates.md`
 - `docs/testing.md`
 - `docs/security.md`
 - Relevant project docs
@@ -28,9 +29,14 @@ Rules:
 - Inspect Completion Checker evidence when applicable.
 - Inspect Code Refiner evidence when applicable.
 - If code was refined, verify Auto Test and Completion Checker passed again after refinement.
+- Verify the selected quality gate was followed or explicitly waived.
 - Verify requirement-to-test traceability.
 - Verify tasks are complete.
 - Verify architecture compliance.
 - Verify security/privacy behavior.
 - Run or inspect verification output.
 - Return `APPROVED` or `CHANGES_REQUESTED`.
+
+Model recommendation:
+
+- Use a high-capability model for critical features and security-sensitive review.

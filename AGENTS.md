@@ -107,6 +107,8 @@ If business rules, security rules, data rules, payments, migration, or permissio
 | `docs/testing.md` | Testing and verification strategy | Before declaring completion |
 | `docs/environment.md` | Local setup and commands | When setup or commands are needed |
 | `docs/workflow.md` | SDD lifecycle and AI rules | Before orchestration |
+| `docs/adaptation.md` | Template adaptation rules | During setup or when project config is incomplete |
+| `docs/quality-gates.md` | Light, standard, and critical flow rules | Before choosing workflow intensity |
 | `docs/decisions/` | Approved decisions | When direction is ambiguous |
 | `features/index.json` | Feature list and state | Always when starting |
 | `features/<FEATURE_ID_SLUG>/` | Feature specification | Before implementing that feature |
@@ -118,6 +120,8 @@ If business rules, security rules, data rules, payments, migration, or permissio
 | `.opencode/commands/` | OpenCode slash commands | When using OpenCode commands |
 | `CHECKPOINTS.md` | Objective final validation criteria | Before closing a feature |
 | `scripts/verify.sh` | Project verification entrypoint | Before marking implemented/tested/reviewed/done |
+| `harness.config.json` | Project-specific Harness configuration | After setup, before specs or implementation |
+| `harness.config.example.json` | Reusable config template | During setup |
 
 ## 5. Hard Rules
 
@@ -195,6 +199,10 @@ pending -> spec_ready -> approved -> in_progress -> implemented -> tested -> com
 ```
 
 See `docs/workflow.md` for details.
+
+Before implementation, choose the appropriate quality gate from `docs/quality-gates.md`.
+
+Project-specific technology, commands, and model choices belong in `harness.config.json` and project docs. Do not hardcode stack-specific rules into reusable role contracts.
 
 Allowed exceptional states:
 

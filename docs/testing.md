@@ -8,6 +8,22 @@ Define how agents prove work is correct.
 
 Agents must not say "it works" without evidence.
 
+## Adaptive Verification
+
+Reusable Harness checks live in:
+
+```text
+scripts/verify.sh
+```
+
+Project-specific checks live in:
+
+```text
+scripts/verify-project.sh
+```
+
+Configure the real commands in `harness.config.json` and mirror them in `scripts/verify-project.sh`.
+
 ## Test Levels
 
 Use the levels that apply to this project:
@@ -143,7 +159,7 @@ Then add commands such as:
 pnpm lint
 pnpm test
 pnpm build
-pnpm exec playwright test
+pnpm exec playwright test --headed
 ```
 
 ## Requirement Traceability
@@ -168,3 +184,13 @@ A feature is not complete unless:
 - Verification output is recorded.
 - Requirement traceability exists.
 - Review is complete.
+
+## Evidence Location
+
+Evidence may be recorded in the feature progress file or in:
+
+```text
+features/<FEATURE_ID_SLUG>/evidence/
+```
+
+Browser evidence should include the command used, headed-mode confirmation when Playwright is available, and screenshots or notes when useful.

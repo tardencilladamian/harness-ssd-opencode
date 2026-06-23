@@ -63,6 +63,41 @@ pending
 
 `spike` work must not ship production behavior. It must produce a decision, prototype result, or documented recommendation.
 
+## Adaptive Harness Flow
+
+The template has two layers:
+
+- Reusable Harness core: roles, commands, lifecycle, verification entrypoint, and quality gates.
+- Project-adapted layer: `harness.config.json`, project docs, project verification commands, feature specs, and progress files.
+
+Project-specific rules should be added to project docs and `harness.config.json`, not hardcoded into reusable agent contracts.
+
+If a command discovers missing project setup, it should report the gap and propose the smallest setup update before continuing.
+
+## Quality Gate Selection
+
+Before implementation, choose one of the quality gates from `docs/quality-gates.md`:
+
+- `light` for low-risk documentation or small internal changes.
+- `standard` for normal product features.
+- `critical` for security, permissions, payments, private data, database, public visibility, shared modules, migrations, or complex UI flows.
+
+Critical flow should include Code Refiner unless the user explicitly waives refinement and the reason is recorded.
+
+## Model Strategy
+
+Recommended strategy:
+
+```text
+Think expensive. Build cheap. Verify always.
+```
+
+Use high-capability models for ambiguity, specs, architecture, critical review, and escalation.
+
+Use cost-efficient models for implementation, tests, routine fixes, and evidence collection when the approved spec is complete.
+
+Chosen model names belong in `harness.config.json`.
+
 ## Allowed Reverse Transitions
 
 Forward motion is preferred, but real projects need controlled rollback.
@@ -98,6 +133,13 @@ Optional files:
 test-plan.md
 review.md
 notes.md
+evidence/
+```
+
+New features may start from:
+
+```text
+features/_template/
 ```
 
 ## Requirements Rules
@@ -165,7 +207,6 @@ Auto Test must:
 If Auto Test fails, the feature returns to `in_progress` for fixes.
 
 The Reviewer should not review a feature with failed or missing Auto Test evidence unless the user explicitly waives that requirement.
-
 
 ## Completion Checker Phase
 
@@ -271,6 +312,14 @@ Before ending a session:
 3. Show `git status`.
 4. Summarize diff.
 5. Ask for commit approval if a commit is needed.
+
+Session-level details may be recorded in:
+
+```text
+progress/sessions/<DATE>-<FEATURE_ID>.md
+```
+
+Session logs do not replace `progress/current.md`, feature progress files, or human approval gates.
 
 ## Project-Specific Verification
 

@@ -3,6 +3,8 @@
   "instructions": [
     "AGENTS.md",
     "docs/workflow.md",
+    "docs/quality-gates.md",
+    "docs/adaptation.md",
     "docs/testing.md",
     "docs/security.md"
   ],

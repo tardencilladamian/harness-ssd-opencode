@@ -24,13 +24,17 @@ progress/features/<FEATURE_ID_SLUG>.md
 
 - Read `AGENTS.md`.
 - Read `docs/workflow.md`.
+- Read `docs/quality-gates.md`.
 - Read `docs/index.md`.
+- Read `harness.config.json` when it exists.
 - Read relevant project docs based on the feature.
 - Read `features/index.json`.
 - Create verifiable requirements.
 - Create implementation design before code.
 - Create small, traceable tasks.
 - Map tasks to requirements.
+- Recommend the appropriate quality gate: light, standard, or critical.
+- Declare feature dependencies and affected slices when known.
 - Document assumptions, risks, and out-of-scope items.
 
 ## Must Not Do
@@ -52,6 +56,7 @@ progress/features/<FEATURE_ID_SLUG>.md
 | UI behavior | `docs/ui-system.md`, `docs/security.md` |
 | Architecture or dependency change | `docs/architecture.md`, `docs/decisions/` |
 | Verification planning | `docs/testing.md` |
+| Quality gate selection | `docs/quality-gates.md`, `harness.config.json` when present |
 
 ## Specification Files
 
@@ -81,6 +86,12 @@ Must provide executable tasks:
 
 ```text
 - [ ] T01 - Implement behavior. Covers: R1.
+```
+
+New feature specs should follow the structure in:
+
+```text
+features/_template/
 ```
 
 ## Output

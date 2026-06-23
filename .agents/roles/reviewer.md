@@ -10,11 +10,14 @@ The Reviewer does not edit code.
 
 - Read `AGENTS.md`.
 - Read `CHECKPOINTS.md`.
+- Read `docs/quality-gates.md`.
+- Read `harness.config.json` when it exists.
 - Read relevant docs.
 - Read the feature spec.
 - Inspect changed files.
 - Verify requirement coverage.
 - Verify requirement-to-test traceability.
+- Verify the selected quality gate was followed or explicitly waived.
 - Verify tasks are complete.
 - Verify architecture compliance.
 - Verify security/privacy behavior.

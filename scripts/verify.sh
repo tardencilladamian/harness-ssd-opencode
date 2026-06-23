@@ -50,12 +50,18 @@ require_file "progress/current.md"
 require_file "progress/history.md"
 require_file "docs/index.md"
 require_file "docs/workflow.md"
+require_file "docs/adaptation.md"
+require_file "docs/quality-gates.md"
 require_file "docs/testing.md"
 require_file "docs/security.md"
+require_file "harness.config.example.json"
 require_file "scripts/verify.sh"
+require_file "scripts/new-feature.sh"
 require_dir_with_md ".agents/roles"
 require_dir_with_md ".opencode/agents"
 require_dir_with_md ".opencode/commands"
+require_dir_with_md "features/_template"
+require_dir_with_md "progress/sessions"
 
 echo ""
 echo "== Template placeholder detection =="
@@ -77,8 +83,10 @@ for placeholder in "${PLACEHOLDERS[@]}"; do
   matches="$(
     grep -RIl \
       --exclude-dir=.git \
+      --exclude-dir=_template \
       --exclude='*.zip' \
       --exclude='README.md' \
+      --exclude='harness.config.example.json' \
       "$placeholder" docs features progress 2>/dev/null \
       | grep -v '^docs/decisions/README.md$' \
       || true
@@ -131,6 +139,14 @@ features = data.get("features", [])
 if not isinstance(features, list):
     raise SystemExit("[FAIL] features/index.json must contain a features array")
 
+by_id = {}
+for feature in features:
+    feature_id = feature.get("id")
+    if feature_id in by_id:
+        raise SystemExit(f"[FAIL] Duplicate feature id: {feature_id}")
+    if feature_id:
+        by_id[feature_id] = feature
+
 in_progress = [f for f in features if f.get("status") == "in_progress"]
 if len(in_progress) > 1:
     raise SystemExit("[FAIL] More than one feature is in_progress")
@@ -154,6 +170,22 @@ for feature in features:
         raise SystemExit(f"[FAIL] Feature {feature_id} missing slug or name")
     if status not in valid:
         raise SystemExit(f"[FAIL] Invalid status for {feature_id}: {status}")
+
+    depends_on = feature.get("depends_on", [])
+    if depends_on is None:
+        depends_on = []
+    if not isinstance(depends_on, list):
+        raise SystemExit(f"[FAIL] {feature_id} depends_on must be an array")
+    for dependency_id in depends_on:
+        dependency = by_id.get(dependency_id)
+        if dependency is None:
+            raise SystemExit(f"[FAIL] {feature_id} depends on unknown feature {dependency_id}")
+        if status in {"approved", "in_progress", "implemented", "tested", "completion_checked", "code_refined", "reviewed", "done"} and dependency.get("status") != "done":
+            raise SystemExit(f"[FAIL] {feature_id} depends on {dependency_id}, but dependency status is {dependency.get('status')}")
+
+    slice_data = feature.get("slice", {})
+    if slice_data and not isinstance(slice_data, dict):
+        raise SystemExit(f"[FAIL] {feature_id} slice must be an object")
 
     feature_dir = root / "features" / f"{feature_id}-{slug}"
     progress_file = root / "progress" / "features" / f"{feature_id}-{slug}.md"
@@ -195,6 +227,36 @@ PY
   fi
 else
   warn "python3 not found; skipping JSON and feature coherence validation"
+fi
+
+echo ""
+echo "== C3: Adaptive config =="
+
+if [ -f "harness.config.json" ]; then
+  if command -v python3 >/dev/null 2>&1; then
+    if python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("harness.config.json")
+data = json.loads(path.read_text(encoding="utf-8"))
+
+for key in ["project", "models", "stack", "verification", "quality_gates"]:
+    if key not in data:
+        raise SystemExit(f"[FAIL] harness.config.json missing key: {key}")
+
+print("[OK] harness.config.json has required top-level keys")
+PY
+    then
+      ok "Adaptive config validation passed"
+    else
+      EXIT_CODE=1
+    fi
+  else
+    warn "python3 not found; skipping harness.config.json validation"
+  fi
+else
+  warn "harness.config.json not found; copy harness.config.example.json during project setup"
 fi
 
 echo ""

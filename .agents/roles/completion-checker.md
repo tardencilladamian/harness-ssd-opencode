@@ -35,11 +35,13 @@ If the third cycle still fails:
 
 - Read `AGENTS.md`.
 - Read `docs/workflow.md`.
+- Read `docs/quality-gates.md`.
 - Read relevant product/domain docs.
 - Read the full feature spec.
 - Read Auto Test evidence.
 - Compare the implementation result against the feature purpose.
 - Compare the result against every requirement and acceptance criterion.
+- Compare the result against the selected quality gate.
 - Identify missing, incomplete, incorrect, or misaligned behavior.
 - Produce clear correction instructions for Implementer when needed.
 - Track the current completion-check cycle number.

@@ -8,6 +8,8 @@ This template is intentionally stack-agnostic. It can be used for web apps, APIs
 
 - A neutral project operating system for AI agents.
 - Spec Driven Development lifecycle.
+- Adaptive setup for new projects through `harness.config.json`.
+- Quality gates for light, standard, and critical flows.
 - Human approval gates before implementation.
 - One-feature-at-a-time execution.
 - Requirement-to-test traceability.
@@ -38,7 +40,13 @@ pending
 2. Make sure Bash is available.
    - Linux/macOS: use the system shell.
    - Windows: use Git Bash or WSL.
-3. Replace placeholder values in:
+3. Copy the adaptive config:
+
+```bash
+cp harness.config.example.json harness.config.json
+```
+
+4. Replace placeholder values in:
    - `docs/project-overview.md`
    - `docs/architecture.md`
    - `docs/domain-model.md`
@@ -48,23 +56,24 @@ pending
    - `docs/security.md`
    - `docs/environment.md`
    - `docs/testing.md`
+   - `harness.config.json`
    - `features/index.json`
    - `progress/current.md`
    - `progress/history.md`
-4. Keep `F-00-project-foundation` as a completed reference feature.
+5. Keep `F-00-project-foundation` as a completed reference feature.
    - It shows how a complete feature spec/progress/review should look.
    - Your first real project feature should usually start at `F-01`.
-5. Add project-specific checks in `scripts/verify-project.sh`.
+6. Add project-specific checks in `scripts/verify-project.sh`.
    - Keep `scripts/verify.sh` as the reusable Harness verification entrypoint.
    - Use `scripts/verify-project.sh` for stack-specific commands such as `pnpm test`, `pytest`, or `go test ./...`.
-6. Run:
+7. Run:
 
 ```bash
 bash scripts/verify.sh
 ```
 
-7. Open the project with OpenCode.
-8. Start with:
+8. Open the project with OpenCode.
+9. Start with:
 
 ```text
 /init
@@ -81,6 +90,7 @@ Then use `/truth` after the setup is customized.
 | `/status` | Current Harness SDD state summary |
 | `/check` | Run verification and summarize results |
 | `/analyze` | Technical/architecture analysis without implementation |
+| `/new-feature F-XX "Title"` | Create a feature folder from `features/_template/` after approval |
 | `/specify F-XX` | Draft or update a feature spec |
 | `/approve-spec F-XX` | Mark a reviewed spec as approved |
 | `/implement F-XX` | Implement an approved feature |
@@ -90,6 +100,57 @@ Then use `/truth` after the setup is customized.
 | `/refine-code F-XX` | Refactor completed feature code without changing behavior |
 | `/review F-XX` | Review implementation without editing |
 | `/close-feature F-XX` | Close a reviewed feature and prepare commit summary |
+| `/session-close` | Close the current work session without committing automatically |
+
+## Adaptive Project Setup
+
+This template is intended to stay reusable. Project-specific truth belongs in:
+
+```text
+harness.config.json
+docs/project-overview.md
+docs/architecture.md
+docs/domain-model.md
+docs/data-model.md
+docs/security.md
+docs/environment.md
+docs/testing.md
+scripts/verify-project.sh
+```
+
+Use:
+
+```bash
+bash scripts/new-feature.sh F-01 "Feature title"
+```
+
+to create a new feature folder from `features/_template/`.
+
+## Quality Gates
+
+Read `docs/quality-gates.md` before choosing the workflow intensity.
+
+Recommended default:
+
+```text
+light    -> small docs or low-risk internal changes
+standard -> normal product features
+critical -> security, payments, database, permissions, private data, public visibility, shared modules
+```
+
+## Model Strategy
+
+Recommended operating model:
+
+```text
+Think expensive. Build cheap. Verify always.
+```
+
+Use a high-capability model for `/init`, `/truth`, `/specify`, architecture, spec review, security review, and escalation.
+
+Use a cost-efficient model for `/implement`, `/auto-test`, routine fixes, and evidence collection when the spec is complete.
+
+Do not hardcode model names until the real project selects providers. Record chosen models in `harness.config.json`.
 
 ## Browser Testing Rule
 

@@ -16,6 +16,8 @@ Then summarize:
 - Whether verification passed.
 - Any failing checks.
 - Any likely cause.
+- Whether `harness.config.json` is missing or incomplete.
+- Whether project-specific checks are configured.
 - Recommended next action.
 
 Do not edit files.

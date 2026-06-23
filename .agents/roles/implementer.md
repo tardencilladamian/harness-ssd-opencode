@@ -15,8 +15,11 @@ The Implementer executes one approved feature according to its specification.
 
 - Read `AGENTS.md`.
 - Read `docs/workflow.md`.
+- Read `docs/quality-gates.md`.
+- Read `harness.config.json` when it exists.
 - Read relevant technical docs based on the approved feature.
 - Read the full feature spec.
+- Verify every feature listed in `depends_on` is `done`.
 - Execute tasks in order.
 - Keep changes scoped to the active feature.
 - Add or update tests.
@@ -27,6 +30,7 @@ The Implementer executes one approved feature according to its specification.
 ## Must Not Do
 
 - Implement unapproved features.
+- Implement when feature dependencies are not satisfied.
 - Change architecture, stack, or dependencies without approval.
 - Edit outside the approved scope.
 - Skip tests.

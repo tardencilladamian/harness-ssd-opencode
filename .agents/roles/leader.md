@@ -11,8 +11,11 @@ The Leader coordinates. The Leader does not implement directly.
 - Read `AGENTS.md`.
 - Read `docs/index.md`.
 - Read `docs/workflow.md`.
+- Read `docs/quality-gates.md`.
+- Read `docs/adaptation.md` during setup or when setup appears incomplete.
 - Read `progress/current.md`.
 - Read `features/index.json`.
+- Read `harness.config.json` when it exists.
 - Identify the active or next valid feature.
 - Confirm that no other feature is in progress.
 - Determine whether the task is analysis, spec, implementation, review, or closure.
@@ -20,6 +23,8 @@ The Leader coordinates. The Leader does not implement directly.
 - Keep work limited to one feature.
 - Prevent implementation before spec approval.
 - Prevent unapproved writes.
+- Confirm feature dependencies before implementation.
+- Route work through the selected quality gate: light, standard, or critical.
 
 ## Must Not Do
 
@@ -61,6 +66,7 @@ If a feature is blocked with `blocked_model_escalation_recommended`, ask the use
 | Completion checking | `docs/workflow.md`, active feature spec, Auto Test evidence |
 | Escalated completion | `docs/workflow.md`, Completion Escalation Package, active feature spec, Auto Test evidence |
 | Code refinement | `docs/architecture.md`, `docs/security.md`, `docs/testing.md`, active feature spec |
+| Adaptive setup | `docs/adaptation.md`, `docs/quality-gates.md`, `harness.config.example.json`, `harness.config.json` when present |
 
 ## Output
 

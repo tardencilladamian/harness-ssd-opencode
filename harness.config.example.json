@@ -1,0 +1,69 @@
+{
+  "project": {
+    "name": "PROJECT_NAME",
+    "description": "Short project description.",
+    "type": "web_app",
+    "default_feature_flow": "standard"
+  },
+  "models": {
+    "strategy": "think_expensive_build_cheap_verify_always",
+    "architect": {
+      "recommended_for": [
+        "init",
+        "truth",
+        "specify",
+        "architecture",
+        "spec_review",
+        "completion_escalation"
+      ],
+      "model": "replace-with-high-capability-model"
+    },
+    "builder": {
+      "recommended_for": [
+        "implement",
+        "auto_test",
+        "completion_check",
+        "fixes",
+        "session_close"
+      ],
+      "model": "replace-with-cost-efficient-model"
+    },
+    "reviewer": {
+      "recommended_for": [
+        "review",
+        "security_review",
+        "release_gate"
+      ],
+      "model": "replace-with-high-capability-model"
+    }
+  },
+  "stack": {
+    "frontend": "replace-with-frontend-stack",
+    "backend": "replace-with-backend-stack",
+    "database": "replace-with-database",
+    "package_manager": "replace-with-package-manager",
+    "test_runner": "replace-with-test-runner",
+    "browser_test_runner": "Playwright when applicable"
+  },
+  "verification": {
+    "typecheck": "",
+    "lint": "",
+    "unit": "",
+    "integration": "",
+    "build": "",
+    "e2e_headed": ""
+  },
+  "quality_gates": {
+    "default": "standard",
+    "critical_when_feature_touches": [
+      "security",
+      "permissions",
+      "payments",
+      "private_data",
+      "database",
+      "public_visibility",
+      "shared_modules",
+      "authentication"
+    ]
+  }
+}

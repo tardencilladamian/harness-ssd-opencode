@@ -14,6 +14,7 @@ Follow:
 - `AGENTS.md`
 - `.agents/roles/leader.md`
 - `docs/workflow.md`
+- `docs/quality-gates.md`
 - `CHECKPOINTS.md`
 
 Preconditions:
@@ -27,6 +28,7 @@ Rules:
 
 - Update progress only if approved.
 - Append to `progress/history.md` only if approved.
+- Add a session log in `progress/sessions/` when useful and approved.
 - Show `git status`.
 - Show diff summary.
 - Prepare final commit message.

@@ -40,3 +40,10 @@ Do not edit previous entries. Add new entries at the end.
 - Scope: Added `code-refiner` neutral role, OpenCode adapter, `/refine-code` command, lifecycle state `code_refined`, and post-refactor retest requirements.
 - Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
 - Result: Template supports behavior-preserving code quality refinement before final review.
+
+## 2026-06-23 - Adaptive Harness V8 Added
+
+- Agent: AI
+- Scope: Added adaptive setup docs, quality gates, `harness.config.example.json`, feature templates, session logs, feature dependency/slice metadata, `/new-feature`, `/session-close`, and stronger verification checks.
+- Verification: `bash scripts/verify.sh` passed with template placeholder warnings allowed by default.
+- Result: Template supports reusable startup for any new project while adapting progressively through Harness commands.

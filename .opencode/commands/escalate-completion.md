@@ -20,6 +20,7 @@ Follow:
 - `AGENTS.md`
 - `.agents/roles/completion-checker.md`
 - `docs/workflow.md`
+- `docs/quality-gates.md`
 - The full feature spec
 - The feature progress file
 - Auto Test evidence
@@ -50,3 +51,7 @@ or:
 ```text
 spec_clarification_required -> progress/features/<FEATURE_ID_SLUG>.md
 ```
+
+Model recommendation:
+
+- Use a high-capability model. This command exists because the previous model or approach failed after 3 cycles.
