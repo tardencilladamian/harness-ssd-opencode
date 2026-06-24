@@ -16,6 +16,7 @@ This template is stack-agnostic. It can be used for web apps, APIs, CLIs, mobile
 - OpenCode slash commands in `.opencode/commands/`.
 - Granular project documentation under `docs/`.
 - A short project context entrypoint: `CONTEXT.md`.
+- OpenCode startup instructions include workflow, testing, and security rules.
 - A single verification entrypoint: `scripts/verify.sh`.
 
 ## Recommended Lifecycle
@@ -118,6 +119,8 @@ progress/STATUS.md
 scripts/verify.sh
 ```
 
+`CONTEXT.md` should stay short. Detailed truth belongs in the granular docs under `docs/`.
+
 Use:
 
 ```bash
@@ -125,6 +128,8 @@ bash scripts/new-feature.sh F-01 "Feature title"
 ```
 
 to create a new feature file from `features/_template.md`.
+
+Default feature format is one markdown file per feature. Use a feature folder only when the feature becomes too large to review cleanly or needs large supporting evidence, diagrams, fixtures, or migration notes.
 
 `F-00-project-foundation` already exists because every real project needs a foundation feature. Do not treat it as a demo; implement it as part of the app setup.
 

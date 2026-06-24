@@ -1,6 +1,9 @@
 # F-00 - Project Foundation
 
-Status: pending
+> Status: pending
+> Quality gate: critical
+> Next gate: project foundation spec approval
+> Owner role: spec-author
 
 ## Purpose
 

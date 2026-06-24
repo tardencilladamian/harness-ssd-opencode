@@ -7,9 +7,12 @@ Use this file to decide which project documents to read. Do not load every docum
 | File | Purpose |
 |---|---|
 | `AGENTS.md` | Agent operating rules and repository map |
+| `CONTEXT.md` | Short project summary and setup status |
 | `progress/STATUS.md` | Current global state |
 | `features/index.json` | Feature list and lifecycle state |
 | `docs/workflow.md` | SDD workflow, quality gates, and lifecycle rules |
+| `docs/testing.md` | Verification and evidence rules |
+| `docs/security.md` | Security and privacy rules |
 
 ## Project Truth
 

@@ -1,25 +1,27 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "instructions": [
-    "AGENTS.md",
-    "docs/index.md",
-    "docs/workflow.md",
-    "CONTEXT.md"
-  ],
-  "permission": {
-    "edit": "ask",
-    "bash": "ask"
-  },
-  "watcher": {
-    "ignore": [
-      ".git/**",
-      "node_modules/**",
-      "dist/**",
-      "build/**",
-      ".next/**",
-      "coverage/**",
-      ".venv/**",
-      "__pycache__/**"
-    ]
-  }
+	"$schema": "https://opencode.ai/config.json",
+	"instructions": [
+		"AGENTS.md",
+		"CONTEXT.md",
+		"docs/index.md",
+		"docs/workflow.md",
+		"docs/testing.md",
+		"docs/security.md"
+	],
+	"permission": {
+		"edit": "ask",
+		"bash": "ask"
+	},
+	"watcher": {
+		"ignore": [
+			".git/**",
+			"node_modules/**",
+			"dist/**",
+			"build/**",
+			".next/**",
+			"coverage/**",
+			".venv/**",
+			"__pycache__/**"
+		]
+	}
 }

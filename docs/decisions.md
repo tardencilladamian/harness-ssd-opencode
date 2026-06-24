@@ -32,7 +32,15 @@ Use `F-00-project-foundation` as the first real project foundation feature. Use 
 
 ### 2026-06-23 - Consolidate Harness V11
 
-Use `CONTEXT.md` as consolidated project truth, `.opencode/agents/` as the only agent contract location, one markdown file per feature, and `progress/STATUS.md` plus feature logs for progress.
+Use `CONTEXT.md` as the short project context entrypoint, `.opencode/agents/` as the only agent contract location, one markdown file per feature, and `progress/STATUS.md` plus feature logs for progress.
+
+### 2026-06-24 - Restore Initial Documentation Granularity
+
+Keep v11's simplified agent, feature, progress, and verification structure, but restore initial granular project documentation under `docs/` for product, domain, data, architecture, API, UI, security, environment, and testing.
+
+### 2026-06-24 - Add Controlled Granularity V13
+
+Keep granular docs, but reduce duplicated documentation routing by making `docs/index.md` the detailed router. Load `docs/testing.md` and `docs/security.md` in OpenCode startup instructions. Add feature metadata, a large-feature exception rule, a structured `progress/STATUS.md`, and evidence-oriented feature logs.
 
 ## Project Decisions
 

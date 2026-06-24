@@ -164,6 +164,7 @@ requires_spec = {"spec_ready", "approved", "in_progress", "implemented", "tested
 requires_log = {"spec_ready", "approved", "in_progress", "implemented", "tested", "completion_checked", "code_refined", "reviewed", "done", "blocked"}
 task_pattern = re.compile(r"^- \[( |x|X)\] T\d+", re.MULTILINE)
 requirement_pattern = re.compile(r"^### R\d+", re.MULTILINE)
+metadata_tokens = ["Status:", "Quality gate:", "Next gate:", "Owner role:"]
 
 for feature in features:
     feature_id = feature.get("id")
@@ -203,6 +204,9 @@ for feature in features:
         if not feature_file.is_file():
             raise SystemExit(f"[FAIL] Missing spec file for {feature_id}: {feature_file}")
         spec = feature_file.read_text(encoding="utf-8")
+        for token in metadata_tokens:
+            if token not in spec:
+                raise SystemExit(f"[FAIL] {feature_id} missing feature metadata token: {token}")
         for heading in ["## Requirements", "## Design", "## Tasks"]:
             if heading not in spec:
                 raise SystemExit(f"[FAIL] {feature_id} missing section: {heading}")

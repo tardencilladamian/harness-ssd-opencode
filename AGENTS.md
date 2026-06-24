@@ -65,31 +65,25 @@ If business rules, security rules, data rules, payments, migration, or permissio
 
 ## 4. Repository Map
 
-| Path | Purpose | When to read |
-|---|---|---|
-| `CONTEXT.md` | Executive project summary and documentation map | Starting, onboarding, or checking setup completeness |
-| `docs/index.md` | Documentation routing map | Before choosing which detailed docs to read |
-| `docs/project.md` | Product objective, users, scope, and feature areas | Product behavior, scope, UX intent, or roadmap |
-| `docs/domain.md` | Domain concepts, terminology, and business rules | Business rules or domain-sensitive implementation |
-| `docs/data.md` | Data model, constraints, migrations, seeds, and imports | Database, persistence, migration, or reports |
-| `docs/architecture.md` | Technical boundaries, stack, modules, and dependency rules | Implementation, refactors, or architecture decisions |
-| `docs/api.md` | API conventions and contracts | Endpoints, clients, integrations, or API tests |
-| `docs/ui.md` | UI system, accessibility, responsive behavior, states, and forms | Frontend, forms, or browser testing |
-| `docs/security.md` | Security, privacy, permissions, uploads, secrets, and logging | Auth, permissions, private data, payments, or uploads |
-| `docs/environment.md` | Local setup, services, variables, runtime versions, and commands | Setup, CI, failing commands, or onboarding |
-| `docs/testing.md` | Test strategy, evidence, verification, and browser testing | Before marking implemented, tested, reviewed, or done |
-| `docs/workflow.md` | Lifecycle, quality gates, adaptive setup, and AI work rules | Before orchestration |
-| `docs/decisions.md` | Approved technical and product decisions | When direction is ambiguous |
-| `features/index.json` | Feature list and state | Always when starting |
-| `features/<FEATURE_ID_SLUG>.md` | Complete feature specification | Before implementing that feature |
-| `progress/STATUS.md` | Live global progress and history | Always when starting |
-| `progress/<FEATURE_ID_SLUG>-log.md` | Feature-specific progress, evidence, and review notes | Whenever a feature is active |
-| `.opencode/agents/` | Agent contracts | When executing a role |
-| `.opencode/commands/` | OpenCode slash command procedures | When using OpenCode commands |
-| `CHECKPOINTS.md` | Objective final validation criteria | Before closing a feature |
-| `scripts/verify.sh` | Harness and project verification entrypoint | Before marking tested, reviewed, or done |
-| `harness.config.json` | Project-specific Harness configuration | After setup, before specs or implementation |
-| `harness.config.example.json` | Reusable config template | During setup |
+`docs/index.md` is the detailed documentation router. Use it to decide which project docs apply to the current task.
+
+Core map:
+
+| Path | Purpose |
+|---|---|
+| `CONTEXT.md` | Short project summary and setup status |
+| `docs/index.md` | Detailed documentation router |
+| `docs/workflow.md` | SDD lifecycle and operating rules |
+| `docs/testing.md` | Verification and evidence rules |
+| `docs/security.md` | Security and privacy rules |
+| `features/index.json` | Machine-readable feature list and state |
+| `features/<FEATURE_ID_SLUG>.md` | Complete feature specification |
+| `progress/STATUS.md` | Global current state and log |
+| `progress/<FEATURE_ID_SLUG>-log.md` | Feature timeline, evidence, and review |
+| `.opencode/agents/` | Agent contracts |
+| `.opencode/commands/` | OpenCode slash command procedures |
+| `CHECKPOINTS.md` | Objective final validation criteria |
+| `scripts/verify.sh` | Harness and project verification entrypoint |
 
 ## 5. Hard Rules
 

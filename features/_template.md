@@ -1,6 +1,9 @@
 # F-XX - FEATURE_NAME
 
-Status: pending
+> Status: pending
+> Quality gate: standard
+> Next gate: spec approval
+> Owner role: spec-author
 
 ## Purpose
 

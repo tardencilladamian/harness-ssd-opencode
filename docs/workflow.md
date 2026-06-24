@@ -60,11 +60,33 @@ pending
 The template has two layers:
 
 - Reusable Harness core: agent contracts, commands, lifecycle, verification entrypoint, and quality gates.
-- Project-adapted layer: `harness.config.json`, `CONTEXT.md`, project verification commands, feature specs, and progress logs.
+- Project-adapted layer: `harness.config.json`, `CONTEXT.md`, granular docs under `docs/`, project verification commands, feature specs, and progress logs.
 
-Project-specific rules should be added to `CONTEXT.md`, `docs/decisions.md`, and `harness.config.json`, not hardcoded into reusable agent contracts.
+Project-specific rules should be added to `CONTEXT.md`, the relevant granular docs, `docs/decisions.md`, and `harness.config.json`, not hardcoded into reusable agent contracts.
 
 If a command discovers missing project setup, it should report the gap and propose the smallest setup update before continuing.
+
+## Documentation Structure
+
+`CONTEXT.md` is the short executive summary. Detailed project truth belongs in granular docs:
+
+```text
+docs/index.md
+docs/project.md
+docs/domain.md
+docs/data.md
+docs/architecture.md
+docs/api.md
+docs/ui.md
+docs/security.md
+docs/environment.md
+docs/testing.md
+docs/decisions.md
+```
+
+Agents should read `docs/index.md` first, then only the detailed docs required for the current task.
+
+If a feature touches business rules, data, API, UI, security, environment, or testing, the related detailed document must be complete enough before implementation starts.
 
 ## Feature Structure
 
@@ -77,9 +99,19 @@ features/<FEATURE_ID_SLUG>.md
 The file must include:
 
 ```text
+Feature metadata
 ## Requirements
 ## Design
 ## Tasks
+```
+
+Recommended feature metadata:
+
+```text
+> Status: pending
+> Quality gate: standard
+> Next gate: spec approval
+> Owner role: spec-author
 ```
 
 New features may start from:
@@ -99,6 +131,25 @@ Global progress, active feature, summary, and history live in:
 ```text
 progress/STATUS.md
 ```
+
+## Large Feature Exception
+
+Default to one feature file:
+
+```text
+features/<FEATURE_ID_SLUG>.md
+```
+
+Use a feature folder only when the feature file would become hard to review, usually because it exceeds about 300 lines or needs large supporting evidence, diagrams, fixtures, or migration notes:
+
+```text
+features/<FEATURE_ID_SLUG>/
+  feature.md
+  evidence/
+  notes.md
+```
+
+This exception must be documented in the feature file or feature log before implementation.
 
 ## Requirements Rules
 

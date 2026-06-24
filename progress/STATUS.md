@@ -1,26 +1,17 @@
-# Progress Status
+# Project Status
 
-## Last Updated
+## Current
 
-2026-06-23
+| Field | Value |
+|---|---|
+| Last updated | 2026-06-24 |
+| Active feature | None |
+| Global status | Reusable Harness template is ready. Real project foundation has not been completed yet. |
+| Current role | None |
+| Next gate | F-00 project foundation spec approval |
+| Recommended next action | Run `/init`, then `/truth`, then prepare F-00 for approval and implementation. |
 
-## Active Feature
-
-None
-
-## Global Status
-
-Reusable Harness template is ready. Real project foundation has not been completed yet.
-
-## Last Completed Action
-
-Template upgraded so F-00 is now the first real project foundation feature, not a demo. V12 adds initial granular documentation under `docs/`.
-
-## Recommended Next Action
-
-Run `/init`, then `/truth`, then prepare F-00 project foundation for approval and implementation.
-
-## Global Blockers
+## Blockers
 
 None.
 
@@ -38,14 +29,17 @@ None.
 
 ## Feature Summary
 
-| Feature | Status | Notes |
-|---|---|---|
-| F-00 Project Foundation | pending | First real project foundation feature |
+| Feature | Status | Quality gate | Notes |
+|---|---|---|---|
+| F-00 Project Foundation | pending | critical | First real project foundation feature |
 
-## History
+## Log
 
-- 2026-06-23 - Template upgraded so F-00 is a real project foundation feature.
-- 2026-06-24 - V12 adds initial granular documentation while keeping v11's simplified feature/progress structure.
+| Date | Event | Feature | Result |
+|---|---|---|---|
+| 2026-06-23 | Template foundation updated | F-00 | F-00 is a real project foundation feature, not a demo |
+| 2026-06-24 | V12 granular docs added | F-00 | Initial docs restored while keeping simplified feature/progress structure |
+| 2026-06-24 | V13 controlled granularity added | F-00 | Startup docs, feature metadata, STATUS format, and feature logs improved |
 
 ## Notes For Next Session
 

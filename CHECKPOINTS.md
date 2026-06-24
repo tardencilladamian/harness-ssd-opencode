@@ -39,6 +39,7 @@ Use this checklist before marking a feature as `done`.
 ## C3 - Specification Quality
 
 - [ ] `features/<FEATURE_ID_SLUG>.md` exists.
+- [ ] Feature metadata includes status, quality gate, next gate, and owner role.
 - [ ] The feature file has `## Requirements`, `## Design`, and `## Tasks`.
 - [ ] Requirements are numbered with stable IDs.
 - [ ] Requirements are verifiable.

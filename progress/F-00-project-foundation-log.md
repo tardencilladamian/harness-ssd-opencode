@@ -1,26 +1,23 @@
 # Feature Log - F-00 Project Foundation
 
-## Feature
+## Current
 
-F-00 - Project Foundation
+| Field | Value |
+|---|---|
+| Feature | F-00 - Project Foundation |
+| Status | pending |
+| Quality gate | critical |
+| Last updated | 2026-06-24 |
+| Associated spec | `features/F-00-project-foundation.md` |
+| Next gate | project foundation spec approval |
 
-## Current Status
+## Task State
 
-pending
-
-## Last Updated
-
-2026-06-23
-
-## Associated Spec
-
-`features/F-00-project-foundation.md`
-
-## Completed Tasks
+### Completed Tasks
 
 None.
 
-## Pending Tasks
+### Pending Tasks
 
 - T01 - Create `harness.config.json` from `harness.config.example.json` with real project values.
 - T02 - Replace placeholders in `CONTEXT.md` and `docs/project.md`.
@@ -32,6 +29,14 @@ None.
 - T08 - Record evidence, progress, blockers, and next action.
 - T09 - Prepare review and closure evidence without committing until the user approves.
 
+## Timeline
+
+| Date | Event | Result |
+|---|---|---|
+| 2026-06-23 | F-00 added as real project foundation feature | Pending real project adaptation |
+| 2026-06-24 | V12 granular docs added | F-00 now requires completion or explicit deferral of granular docs |
+| 2026-06-24 | V13 metadata and log format added | Feature log is organized by task state, evidence, and review |
+
 ## Blockers
 
 None.
@@ -42,31 +47,23 @@ None.
 - Project stack may still be undecided.
 - App scaffold must not be created until the F-00 implementation scope is explicitly approved.
 
-## Changes Made
+## Implementation Evidence
 
-Reusable template includes the F-00 spec, but the real project foundation has not been implemented yet.
+No implementation has been performed for the real project foundation.
 
-## Tests Executed
-
-None for the real project foundation.
-
-## Verification Result
+## Auto Test Evidence
 
 Pending.
 
-## Auto Test Result
+## Completion Check Evidence
 
 Pending.
 
-## Completion Checker Result
+## Code Refiner Evidence
 
 Pending.
 
-## Code Refiner Result
-
-Pending.
-
-## Review Result
+## Review
 
 Pending.
 
