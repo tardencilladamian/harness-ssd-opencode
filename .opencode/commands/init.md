@@ -35,8 +35,12 @@ Process:
    - Database/storage.
    - Testing commands.
    - F-00 implementation scope.
-5. Propose exact files to update, including granular docs and whether to create `harness.config.json` from `harness.config.example.json`.
-6. Wait for approval before writing.
-7. After approved updates, run `bash scripts/verify.sh --all`.
-8. Recommend `/truth` as the next command.
-9. Recommend preparing `F-00-project-foundation` before creating product features.
+5. Confirm dependency policy:
+   - Latest stable compatible packages by default.
+   - No prerelease packages unless approved.
+   - Registry or official documentation verification required before install.
+6. Propose exact files to update, including granular docs and whether to create `harness.config.json` from `harness.config.example.json`.
+7. Wait for approval before writing.
+8. After approved updates, run `bash scripts/verify.sh --all`.
+9. Recommend `/truth` as the next command.
+10. Recommend preparing `F-00-project-foundation` before creating product features.

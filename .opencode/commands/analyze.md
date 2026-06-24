@@ -25,3 +25,5 @@ Rules:
 - Do not edit files unless the user explicitly approves a decision record or documentation update.
 - Present options, tradeoffs, risks, and recommendation.
 - Say whether a decision record is needed.
+- When recommending dependencies, verify latest stable compatibility or clearly state that verification is pending.
+- Do not invent package APIs or versions.

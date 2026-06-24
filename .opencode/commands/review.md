@@ -33,6 +33,8 @@ Rules:
 - Verify requirement-to-test traceability.
 - Verify tasks are complete.
 - Verify architecture compliance.
+- Verify new dependencies were approved and installed as latest stable compatible versions unless an exception was approved.
+- Verify external package APIs/configuration were not guessed.
 - Verify security/privacy behavior.
 - Run or inspect verification output.
 - Return `APPROVED` or `CHANGES_REQUESTED`.

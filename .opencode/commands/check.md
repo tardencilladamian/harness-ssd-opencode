@@ -8,7 +8,7 @@ agent: leader
 Use:
 
 ```bash
-bash scripts/verify.sh
+bash scripts/verify.sh --all
 ```
 
 Then summarize:

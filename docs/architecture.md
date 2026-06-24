@@ -40,6 +40,11 @@ Do not build large horizontal layers without a feature that proves them.
 
 - Do not add dependencies without approval.
 - Prefer existing stack tools.
+- Use the latest stable compatible package version by default.
+- Verify package names, versions, APIs, imports, CLI flags, and configuration keys through the package manager registry, official docs, installed package metadata, or generated types before coding against them.
+- Do not use prerelease, deprecated, unmaintained, or incompatible packages unless explicitly approved.
+- If the latest stable version conflicts with the approved stack, stop and propose options.
+- Record architecture-impacting dependencies in `docs/decisions.md`.
 - Record major technical decisions in `docs/decisions.md`.
 
 ## Error Handling

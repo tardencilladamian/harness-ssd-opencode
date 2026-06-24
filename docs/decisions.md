@@ -42,6 +42,10 @@ Keep v11's simplified agent, feature, progress, and verification structure, but 
 
 Keep granular docs, but reduce duplicated documentation routing by making `docs/index.md` the detailed router. Load `docs/testing.md` and `docs/security.md` in OpenCode startup instructions. Add feature metadata, a large-feature exception rule, a structured `progress/STATUS.md`, and evidence-oriented feature logs.
 
+### 2026-06-24 - Require Verified Latest Stable Dependencies
+
+Use the latest stable compatible package versions by default. Agents must verify package names, versions, APIs, imports, CLI flags, and configuration through official docs, package registries, installed metadata, or generated types before coding against dependencies. Unverified package behavior is a blocker, not an assumption.
+
 ## Project Decisions
 
 Add project-specific decisions here.

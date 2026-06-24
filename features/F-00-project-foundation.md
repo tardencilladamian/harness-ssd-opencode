@@ -17,6 +17,10 @@ This is not a demo feature. It is the first real feature of a new project.
 
 WHEN the project starts from this template, THE SYSTEM SHALL create or configure `harness.config.json` with the real project name, stack, verification commands, model strategy, and default quality gate.
 
+### R1.1
+
+WHEN dependencies are required, THE SYSTEM SHALL use the latest stable compatible package versions by default and verify package names, versions, APIs, imports, CLI flags, and configuration before coding against them.
+
 ### R2
 
 WHEN setup is performed, THE SYSTEM SHALL replace project placeholders in the required documentation with real project-specific information.
@@ -74,6 +78,8 @@ The exact implementation depends on the selected project stack. For example, a w
 
 - Keep the reusable Harness core stack-agnostic.
 - Keep `CONTEXT.md` short and put detailed project truth in granular docs under `docs/`.
+- Use latest stable compatible dependencies by default, verified through registry, official docs, installed metadata, or generated types.
+- Treat unverified package APIs or versions as blockers, not assumptions.
 - Use F-00 as the real project foundation feature.
 - Use `features/_template.md` as the reusable reference structure for future features.
 - Treat stack scaffolding as implementation work that requires explicit user approval.
@@ -84,6 +90,7 @@ F-00 must verify:
 
 - Harness structure with `bash scripts/verify.sh --harness`.
 - Project-specific checks with `bash scripts/verify.sh --project` when configured.
+- Dependency policy present in `harness.config.json` when created.
 - Template-token replacement for project-owned docs.
 - Completion or explicit deferral of granular docs.
 - Correct progress state.
@@ -99,11 +106,12 @@ F-00 must verify:
 ## Tasks
 
 - [ ] T01 - Create `harness.config.json` from `harness.config.example.json` with real project values. Covers: R1.
-- [ ] T02 - Replace placeholders in `CONTEXT.md` and `docs/project.md`. Covers: R2.
-- [ ] T03 - Complete or explicitly defer `docs/domain.md`, `docs/data.md`, `docs/architecture.md`, `docs/api.md`, `docs/ui.md`, `docs/security.md`, `docs/environment.md`, and `docs/testing.md`. Covers: R2, R3, R5.
-- [ ] T04 - Configure `scripts/verify.sh --project` with real commands or documented setup limitations. Covers: R3, R5.
-- [ ] T05 - Create the approved initial project/app structure for the selected stack when applicable. Covers: R4.
-- [ ] T06 - Configure environment examples and local setup documentation. Covers: R2, R3.
-- [ ] T07 - Run Harness and project verification. Covers: R5.
-- [ ] T08 - Record evidence, progress, blockers, and next action. Covers: R6.
-- [ ] T09 - Prepare review and closure evidence without committing until the user approves. Covers: R5, R6.
+- [ ] T02 - Confirm dependency policy for latest stable compatible packages and anti-hallucination verification. Covers: R1.1, R5.
+- [ ] T03 - Replace placeholders in `CONTEXT.md` and `docs/project.md`. Covers: R2.
+- [ ] T04 - Complete or explicitly defer `docs/domain.md`, `docs/data.md`, `docs/architecture.md`, `docs/api.md`, `docs/ui.md`, `docs/security.md`, `docs/environment.md`, and `docs/testing.md`. Covers: R2, R3, R5.
+- [ ] T05 - Configure `scripts/verify.sh --project` with real commands or documented setup limitations. Covers: R3, R5.
+- [ ] T06 - Create the approved initial project/app structure for the selected stack when applicable. Covers: R4.
+- [ ] T07 - Configure environment examples and local setup documentation. Covers: R2, R3.
+- [ ] T08 - Run Harness and project verification. Covers: R5.
+- [ ] T09 - Record evidence, progress, blockers, and next action. Covers: R6.
+- [ ] T10 - Prepare review and closure evidence without committing until the user approves. Covers: R5, R6.

@@ -41,6 +41,20 @@
     "test_runner": "replace-with-test-runner",
     "browser_test_runner": "Playwright when applicable"
   },
+  "dependency_policy": {
+    "default": "latest_stable_compatible",
+    "allow_prerelease": false,
+    "require_registry_or_official_docs_verification": true,
+    "require_installed_api_verification_when_available": true,
+    "record_dependency_changes_in_feature_log": true,
+    "rules": [
+      "Use the latest stable compatible package version by default.",
+      "Do not invent package names, versions, APIs, imports, CLI flags, or configuration keys.",
+      "Do not use alpha, beta, release candidate, nightly, canary, deprecated, or unmaintained packages unless explicitly approved.",
+      "If the latest stable version is incompatible with the approved stack, stop and propose options.",
+      "Preserve lockfiles and record installed versions when dependencies are added."
+    ]
+  },
   "verification": {
     "typecheck": "",
     "lint": "",

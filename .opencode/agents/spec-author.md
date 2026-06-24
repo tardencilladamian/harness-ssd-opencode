@@ -34,10 +34,12 @@ For an existing feature, also read:
 - Keep tasks small, traceable, and executable.
 - Identify open questions instead of inventing business rules.
 - Read the relevant granular docs before specifying affected slices.
+- When a feature needs new dependencies, specify that latest stable compatible versions must be verified before install.
 
 ## Must Not Do
 
 - Write application code.
 - Mark a feature `in_progress` or `done`.
 - Rewrite approved specs without explicit approval.
+- Invent dependency APIs or versions.
 - Expand scope without asking.

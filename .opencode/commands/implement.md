@@ -32,6 +32,9 @@ Rules:
 
 - Work on one feature only.
 - Respect the granular docs for product, domain, data, API, UI, security, environment, and testing.
+- Use latest stable compatible dependencies by default when new packages are approved.
+- Verify package name, latest stable version, install command, API/import syntax, CLI flags, and configuration before using a dependency.
+- If verification is not possible, stop and ask instead of guessing.
 - Execute tasks in order.
 - Add or update tests with the implementation.
 - Mark tasks complete only after completion.
@@ -39,3 +42,4 @@ Rules:
 - Update progress only if progress updates are approved.
 - Do not commit without user approval.
 - If the spec is ambiguous, stop and request clarification instead of inventing a decision.
+- If package behavior or API is uncertain, inspect installed metadata/types/docs or stop.

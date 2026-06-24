@@ -53,6 +53,9 @@ Use this checklist before marking a feature as `done`.
 - [ ] Architecture boundaries are respected.
 - [ ] No unrelated refactors were introduced.
 - [ ] No unapproved dependency or stack change was introduced.
+- [ ] New dependencies use latest stable compatible versions by default.
+- [ ] Package names, versions, APIs, imports, CLI flags, and configuration keys were verified against official or installed sources.
+- [ ] No guessed external API was treated as verified code.
 - [ ] Error handling is explicit.
 - [ ] Sensitive data is protected.
 

@@ -51,9 +51,12 @@ The spec must recommend:
 - Feature dependencies in `depends_on`.
 - Affected slices: database, API, UI, security, tests, documentation, configuration.
 - Which granular docs must be completed or updated before implementation.
+- Dependency verification requirements when new packages are needed.
 
 Do not write application code.
 
 Do not write tests.
 
 Do not mark the feature `in_progress` or `done`.
+
+Do not invent package names, versions, APIs, CLI flags, imports, or configuration keys. If a dependency is needed, specify that latest stable compatible version must be verified during implementation.

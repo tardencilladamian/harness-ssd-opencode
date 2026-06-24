@@ -28,6 +28,8 @@ You implement one approved feature.
 - Confirm the feature is approved before implementation.
 - Implement only the approved scope.
 - Read the relevant granular docs for every affected slice.
+- Use latest stable compatible dependencies by default when new packages are approved.
+- Verify package names, versions, APIs, imports, CLI flags, and configuration before coding against external libraries.
 - Execute tasks in order unless there is a documented reason.
 - Add or update tests with the implementation.
 - Run relevant verification before reporting implemented.
@@ -39,5 +41,6 @@ You implement one approved feature.
 - Change requirements without returning to specification.
 - Skip tests.
 - Invent critical business, security, data, payment, migration, or permission rules.
+- Invent package names, versions, APIs, imports, CLI flags, or configuration keys.
 - Edit files outside the approved scope.
 - Commit without user approval.

@@ -20,14 +20,15 @@ None.
 ### Pending Tasks
 
 - T01 - Create `harness.config.json` from `harness.config.example.json` with real project values.
-- T02 - Replace placeholders in `CONTEXT.md` and `docs/project.md`.
-- T03 - Complete or explicitly defer granular docs.
-- T04 - Configure `scripts/verify.sh --project` with real commands or documented setup limitations.
-- T05 - Create the approved initial project/app structure for the selected stack when applicable.
-- T06 - Configure environment examples and local setup documentation.
-- T07 - Run Harness and project verification.
-- T08 - Record evidence, progress, blockers, and next action.
-- T09 - Prepare review and closure evidence without committing until the user approves.
+- T02 - Confirm dependency policy for latest stable compatible packages and anti-hallucination verification.
+- T03 - Replace placeholders in `CONTEXT.md` and `docs/project.md`.
+- T04 - Complete or explicitly defer granular docs.
+- T05 - Configure `scripts/verify.sh --project` with real commands or documented setup limitations.
+- T06 - Create the approved initial project/app structure for the selected stack when applicable.
+- T07 - Configure environment examples and local setup documentation.
+- T08 - Run Harness and project verification.
+- T09 - Record evidence, progress, blockers, and next action.
+- T10 - Prepare review and closure evidence without committing until the user approves.
 
 ## Timeline
 
@@ -36,6 +37,7 @@ None.
 | 2026-06-23 | F-00 added as real project foundation feature | Pending real project adaptation |
 | 2026-06-24 | V12 granular docs added | F-00 now requires completion or explicit deferral of granular docs |
 | 2026-06-24 | V13 metadata and log format added | Feature log is organized by task state, evidence, and review |
+| 2026-06-24 | Dependency policy added | Latest stable compatible dependencies and anti-hallucination verification required |
 
 ## Blockers
 

@@ -40,6 +40,7 @@ None.
 | 2026-06-23 | Template foundation updated | F-00 | F-00 is a real project foundation feature, not a demo |
 | 2026-06-24 | V12 granular docs added | F-00 | Initial docs restored while keeping simplified feature/progress structure |
 | 2026-06-24 | V13 controlled granularity added | F-00 | Startup docs, feature metadata, STATUS format, and feature logs improved |
+| 2026-06-24 | Dependency policy added | F-00 | Latest stable compatible dependencies and anti-hallucination verification required |
 
 ## Notes For Next Session
 

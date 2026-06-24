@@ -248,7 +248,7 @@ from pathlib import Path
 path = Path("harness.config.json")
 data = json.loads(path.read_text(encoding="utf-8"))
 
-for key in ["project", "models", "stack", "verification", "quality_gates"]:
+for key in ["project", "models", "stack", "dependency_policy", "verification", "quality_gates"]:
     if key not in data:
         raise SystemExit(f"[FAIL] harness.config.json missing key: {key}")
 

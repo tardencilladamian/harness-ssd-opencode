@@ -215,6 +215,36 @@ Use cost-efficient models for implementation, tests, routine fixes, and evidence
 
 Chosen model names belong in `harness.config.json`.
 
+## Dependency And Package Policy
+
+Default rule: use the most recent stable compatible version of every library or package when adding new dependencies.
+
+Agents must follow these rules before installing or using a package:
+
+- Verify the package name and latest stable version through the package manager registry or official documentation.
+- Do not invent package names, versions, APIs, configuration keys, imports, or command syntax.
+- Do not use alpha, beta, release candidate, nightly, canary, or deprecated packages unless the user explicitly approves that risk.
+- Prefer the project's package manager and existing stack conventions.
+- Record new dependency decisions in the feature spec, feature log, or `docs/decisions.md` when the dependency affects architecture.
+- If the latest stable version is incompatible with the approved stack, stop and propose options instead of silently downgrading.
+- If registry or official documentation cannot be verified, stop and ask before installing or coding against the package.
+
+Use exact installed versions or lockfiles according to the project's package manager. "Latest" means latest verified stable at installation time, not an unverified floating assumption.
+
+## Anti-Hallucination Rules
+
+Agents cannot be guaranteed to never make mistakes, so correctness must be enforced through verification gates.
+
+Before generating code that depends on external libraries, framework APIs, CLI flags, migrations, schemas, or configuration:
+
+- Confirm the source of truth: existing code, project docs, official docs, package registry, generated types, or installed package metadata.
+- Inspect the installed package or generated types when available.
+- Use the repo's existing patterns before inventing abstractions.
+- Run typecheck, lint, tests, and targeted verification after implementation.
+- If an API, business rule, permission rule, migration behavior, or package capability is uncertain, stop and ask.
+
+Do not present guessed code as verified code.
+
 ## Allowed Reverse Transitions
 
 | Situation | Allowed transition | Rule |
