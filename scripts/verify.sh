@@ -4,12 +4,15 @@ set -euo pipefail
 MODE="${1:---all}"
 STRICT_PLACEHOLDERS="${HARNESS_STRICT_PLACEHOLDERS:-0}"
 EXIT_CODE=0
+WARN_COUNT=0
+TEMPLATE_PLACEHOLDERS_FOUND=0
 
 ok() {
   printf "[OK] %s\n" "$1"
 }
 
 warn() {
+  WARN_COUNT=$((WARN_COUNT + 1))
   printf "[WARN] %s\n" "$1"
 }
 
@@ -77,8 +80,10 @@ check_placeholders() {
   if [ "$found" -eq 0 ]; then
     ok "No common template placeholders found"
   elif [ "$STRICT_PLACEHOLDERS" = "1" ]; then
+    TEMPLATE_PLACEHOLDERS_FOUND=1
     fail "Template placeholders remain and HARNESS_STRICT_PLACEHOLDERS=1"
   else
+    TEMPLATE_PLACEHOLDERS_FOUND=1
     warn "Template placeholders remain. This is allowed unless HARNESS_STRICT_PLACEHOLDERS=1"
   fi
 }
@@ -302,7 +307,16 @@ echo ""
 echo "== Summary =="
 
 if [ "$EXIT_CODE" -eq 0 ]; then
-  ok "Verification completed"
+  if [ "$WARN_COUNT" -gt 0 ]; then
+    ok "Verification completed with warnings"
+    printf "[WARN] Warning count: %s\n" "$WARN_COUNT"
+    if [ "$TEMPLATE_PLACEHOLDERS_FOUND" -eq 1 ]; then
+      printf "[WARN] Template placeholders are expected before F-00 project foundation is completed.\n"
+    fi
+    printf "Next step: run /init or complete F-00 project foundation to replace placeholders and configure project checks.\n"
+  else
+    ok "Verification completed with no warnings"
+  fi
 else
   fail "Verification failed"
 fi
