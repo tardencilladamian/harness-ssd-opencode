@@ -7,10 +7,10 @@ agent: leader
 
 Read:
 
-- `progress/current.md`
+- `progress/STATUS.md`
 - `features/index.json`
 - `harness.config.json` when it exists
-- Active feature progress file if any
+- Active feature log if any
 
 Return:
 

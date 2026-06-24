@@ -12,14 +12,14 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/reviewer.md`
+- `.opencode/agents/reviewer.md`
 - `CHECKPOINTS.md`
 - `docs/workflow.md`
-- `docs/quality-gates.md`
-- `docs/testing.md`
-- `docs/security.md`
-- Relevant project docs
-- The complete feature spec
+- `docs/index.md`
+- `CONTEXT.md`
+- Relevant granular docs for the affected slices
+- `features/<FEATURE_ID_SLUG>.md`
+- `progress/<FEATURE_ID_SLUG>-log.md`
 
 Rules:
 
@@ -36,7 +36,3 @@ Rules:
 - Verify security/privacy behavior.
 - Run or inspect verification output.
 - Return `APPROVED` or `CHANGES_REQUESTED`.
-
-Model recommendation:
-
-- Use a high-capability model for critical features and security-sensitive review.

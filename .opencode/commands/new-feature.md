@@ -18,10 +18,9 @@ F-XX "Feature title"
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/leader.md`
+- `.opencode/agents/leader.md`
 - `docs/workflow.md`
-- `docs/quality-gates.md`
-- `features/_template/`
+- `features/_template.md`
 
 Rules:
 
@@ -37,7 +36,3 @@ bash scripts/new-feature.sh F-XX "Feature title"
 - Propose the required `features/index.json` entry.
 - Do not mark the feature `approved` or `in_progress`.
 - Recommend `/specify F-XX` as the next command.
-
-Model recommendation:
-
-- Use a high-capability model when the first feature needs architecture or scope decisions. Use a cost-efficient model for mechanical feature folder creation after approval.

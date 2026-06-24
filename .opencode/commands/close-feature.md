@@ -12,10 +12,11 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/leader.md`
+- `.opencode/agents/leader.md`
 - `docs/workflow.md`
-- `docs/quality-gates.md`
 - `CHECKPOINTS.md`
+- `progress/STATUS.md`
+- `progress/<FEATURE_ID_SLUG>-log.md`
 
 Preconditions:
 
@@ -27,10 +28,9 @@ Preconditions:
 Rules:
 
 - Update progress only if approved.
-- Append to `progress/history.md` only if approved.
-- Add a session log in `progress/sessions/` when useful and approved.
-- Show `git status`.
-- Show diff summary.
+- Add closure history to `progress/STATUS.md` when approved.
+- Show `git status` when Git is available.
+- Show diff summary when Git is available.
 - Prepare final commit message.
 - Do not commit until the user explicitly approves the commit.
 

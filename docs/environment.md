@@ -1,56 +1,53 @@
 # Environment
 
-## Purpose
+This file defines local setup, runtime versions, services, variables, and commands.
 
-Document local setup, environment variables, and common commands.
+## Runtime
 
-## Requirements
-
-Replace with project-specific versions:
-
-- Runtime:
+- Node:
 - Package manager:
+- Backend runtime:
 - Database:
-- Browser/test tools:
-- Shell:
+- Browser tooling:
 
-## Windows Notes
+## Services
 
-`scripts/verify.sh` requires Bash.
-
-On Windows, use one of:
-
-- Git Bash.
-- WSL.
-- A terminal where `bash` is available.
-
-If your project must support PowerShell-only workflows, create a project-specific `scripts/verify.ps1` and document it here.
-
-## Setup
-
-```bash
-# install dependencies
-
-# copy env
-
-# run migrations
-
-# start dev server
-```
+| Service | Purpose | Required locally? |
+|---|---|---|
+| Example service | Replace with purpose | Yes |
 
 ## Environment Variables
 
-| Variable | Required | Purpose |
-|---|---:|---|
-| EXAMPLE_VARIABLE | No | Placeholder |
+| Variable | Purpose | Required? | Secret? |
+|---|---|---|---|
+| EXAMPLE_VAR | Replace with purpose | Yes | No |
 
-## Commands
+## Setup Commands
 
-| Command | Purpose |
-|---|---|
-| `bash scripts/verify.sh` | Run project verification |
-| `bash scripts/verify-project.sh` | Run project-specific checks when configured |
+```bash
+# Replace with setup commands
+```
+
+## Development Commands
+
+```bash
+# Replace with development commands
+```
+
+## Verification Commands
+
+Project-specific commands should be wired into:
+
+```bash
+bash scripts/verify.sh --project
+```
 
 ## Troubleshooting
 
-Document common setup failures here.
+| Problem | Check | Fix |
+|---|---|---|
+| Example problem | Replace with check | Replace with fix |
+
+## Open Questions
+
+- Replace with unresolved environment questions.

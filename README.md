@@ -2,20 +2,21 @@
 
 Reusable Harness Engineering + Spec Driven Development structure for AI-assisted software projects.
 
-This template is intentionally stack-agnostic. It can be used for web apps, APIs, CLIs, mobile apps, libraries, data projects, internal tools, or full product builds.
+This template is stack-agnostic. It can be used for web apps, APIs, CLIs, mobile apps, libraries, data projects, internal tools, or full product builds.
 
 ## What This Template Provides
 
-- A neutral project operating system for AI agents.
+- A practical operating system for AI agents.
 - Spec Driven Development lifecycle.
-- Adaptive setup for new projects through `harness.config.json`.
-- Quality gates for light, standard, and critical flows.
 - Human approval gates before implementation.
 - One-feature-at-a-time execution.
 - Requirement-to-test traceability.
 - Persistent progress files that survive chat/session loss.
-- Neutral agent role contracts in `.agents/roles/`.
-- OpenCode adapters in `.opencode/agents/` and `.opencode/commands/`.
+- OpenCode agent contracts in `.opencode/agents/`.
+- OpenCode slash commands in `.opencode/commands/`.
+- Granular project documentation under `docs/`.
+- A short project context entrypoint: `CONTEXT.md`.
+- A single verification entrypoint: `scripts/verify.sh`.
 
 ## Recommended Lifecycle
 
@@ -37,50 +38,42 @@ pending
 ## First-Time Setup
 
 1. Copy this template into your project root.
-2. Make sure Bash is available.
-   - Linux/macOS: use the system shell.
-   - Windows: use Git Bash or WSL.
-3. Copy the adaptive config:
+2. Copy the adaptive config:
 
 ```bash
 cp harness.config.example.json harness.config.json
 ```
 
-4. Replace placeholder values in:
-   - `docs/project-overview.md`
+3. Replace placeholder values in:
+   - `CONTEXT.md`
+   - `docs/project.md`
+   - `docs/domain.md`
+   - `docs/data.md`
    - `docs/architecture.md`
-   - `docs/domain-model.md`
-   - `docs/data-model.md`
-   - `docs/api-contracts.md`
-   - `docs/ui-system.md`
+   - `docs/api.md`
+   - `docs/ui.md`
    - `docs/security.md`
    - `docs/environment.md`
    - `docs/testing.md`
+   - `docs/decisions.md`
    - `harness.config.json`
    - `features/index.json`
-   - `progress/current.md`
-   - `progress/history.md`
-5. Use `F-00-project-foundation` as the first real project foundation feature.
-   - It adapts the template into the real project.
-   - It should configure the stack, docs, verification, environment, and initial scaffold when approved.
-   - Product features should usually start at `F-01` after F-00 is complete.
-6. Add project-specific checks in `scripts/verify-project.sh`.
-   - Keep `scripts/verify.sh` as the reusable Harness verification entrypoint.
-   - Use `scripts/verify-project.sh` for stack-specific commands such as `pnpm test`, `pytest`, or `go test ./...`.
-7. Run:
+   - `progress/STATUS.md`
+4. Use `F-00-project-foundation` as the first real project foundation feature.
+5. Configure project-specific checks in the `verify_project()` section of `scripts/verify.sh`.
+6. Run:
 
 ```bash
-bash scripts/verify.sh
+bash scripts/verify.sh --all
 ```
 
-8. Open the project with OpenCode.
-9. Start with:
+7. Open the project with OpenCode and start with:
 
 ```text
 /init
 ```
 
-Then use `/truth` after the setup is customized.
+Then use `/truth` after setup is customized.
 
 ## Main OpenCode Commands
 
@@ -91,7 +84,7 @@ Then use `/truth` after the setup is customized.
 | `/status` | Current Harness SDD state summary |
 | `/check` | Run verification and summarize results |
 | `/analyze` | Technical/architecture analysis without implementation |
-| `/new-feature F-XX "Title"` | Create a feature folder from `features/_template/` after approval |
+| `/new-feature F-XX "Title"` | Create a feature file from `features/_template.md` after approval |
 | `/specify F-XX` | Draft or update a feature spec |
 | `/approve-spec F-XX` | Mark a reviewed spec as approved |
 | `/implement F-XX` | Implement an approved feature |
@@ -105,18 +98,24 @@ Then use `/truth` after the setup is customized.
 
 ## Adaptive Project Setup
 
-This template is intended to stay reusable. Project-specific truth belongs in:
+Project-specific truth belongs in:
 
 ```text
 harness.config.json
-docs/project-overview.md
+CONTEXT.md
+docs/project.md
+docs/domain.md
+docs/data.md
 docs/architecture.md
-docs/domain-model.md
-docs/data-model.md
+docs/api.md
+docs/ui.md
 docs/security.md
 docs/environment.md
 docs/testing.md
-scripts/verify-project.sh
+docs/decisions.md
+features/index.json
+progress/STATUS.md
+scripts/verify.sh
 ```
 
 Use:
@@ -125,13 +124,13 @@ Use:
 bash scripts/new-feature.sh F-01 "Feature title"
 ```
 
-to create a new feature folder from `features/_template/`.
+to create a new feature file from `features/_template.md`.
 
 `F-00-project-foundation` already exists because every real project needs a foundation feature. Do not treat it as a demo; implement it as part of the app setup.
 
 ## Quality Gates
 
-Read `docs/quality-gates.md` before choosing the workflow intensity.
+Read `docs/workflow.md` before choosing workflow intensity.
 
 Recommended default:
 
@@ -153,7 +152,7 @@ Use a high-capability model for `/init`, `/truth`, `/specify`, architecture, spe
 
 Use a cost-efficient model for `/implement`, `/auto-test`, routine fixes, and evidence collection when the spec is complete.
 
-Do not hardcode model names until the real project selects providers. Record chosen models in `harness.config.json`.
+Record chosen models in `harness.config.json`.
 
 ## Browser Testing Rule
 
@@ -169,9 +168,7 @@ Use the project's package manager and equivalent command, but keep `--headed`.
 
 After `/auto-test` passes, run `/completion-check` before `/review`.
 
-`completion-checker` verifies that the feature actually achieves its approved purpose, requirements, acceptance criteria, and intended user outcome.
-
-If the feature is incomplete, it returns precise instructions for `implementer`. After fixes, run `/auto-test` again before another `/completion-check`.
+If the feature is incomplete, `completion-checker` returns precise instructions for `implementer`. After fixes, run `/auto-test` again before another `/completion-check`.
 
 The loop is limited to 3 failed completion-check cycles. If the third cycle still fails, stop and consider switching to a higher-capability AI model before spending more budget.
 
@@ -181,7 +178,7 @@ After switching models, run:
 /escalate-completion F-XX
 ```
 
-The new model must read the escalation package, identify why the previous cycles failed, and propose a correction plan before making changes.
+The new model must read the escalation package, identify why previous cycles failed, and propose a correction plan before making changes.
 
 ## Code Refinement Rule
 
@@ -201,19 +198,8 @@ AI agents may read, inspect, and propose by default. They may not write, delete,
 
 ## Placeholder Detection
 
-`scripts/verify.sh` warns when common template placeholders remain, such as:
-
-- `PROJECT_NAME`
-- `YYYY-MM-DD`
-- `Replace with`
-- `ExampleEntity`
-- `Placeholder`
-- `User type 1`
-- `Core feature area`
-- `Out-of-scope item`
-
-Warnings do not fail verification by default. To fail on placeholders, run:
+`scripts/verify.sh` warns when common template placeholders remain. Warnings do not fail verification by default. To fail on placeholders, run:
 
 ```bash
-HARNESS_STRICT_PLACEHOLDERS=1 bash scripts/verify.sh
+HARNESS_STRICT_PLACEHOLDERS=1 bash scripts/verify.sh --all
 ```

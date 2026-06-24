@@ -1,4 +1,4 @@
-# Current Progress
+# Progress Status
 
 ## Last Updated
 
@@ -14,7 +14,7 @@ Reusable Harness template is ready. Real project foundation has not been complet
 
 ## Last Completed Action
 
-Template upgraded so F-00 is now the first real project foundation feature, not a demo.
+Template upgraded so F-00 is now the first real project foundation feature, not a demo. V12 adds initial granular documentation under `docs/`.
 
 ## Recommended Next Action
 
@@ -27,7 +27,7 @@ None.
 ## Open Risks
 
 - Project-specific validation commands may not be configured yet.
-- Product-specific documentation may still contain placeholders.
+- Product-specific context and granular docs may still contain placeholders.
 
 ## Pending Decisions
 
@@ -41,6 +41,11 @@ None.
 | Feature | Status | Notes |
 |---|---|---|
 | F-00 Project Foundation | pending | First real project foundation feature |
+
+## History
+
+- 2026-06-23 - Template upgraded so F-00 is a real project foundation feature.
+- 2026-06-24 - V12 adds initial granular documentation while keeping v11's simplified feature/progress structure.
 
 ## Notes For Next Session
 

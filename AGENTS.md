@@ -2,7 +2,7 @@
 
 This file is the entry point for any AI agent working in this repository.
 
-This is an operational map. Read only what you need, when you need it, applying progressive disclosure.
+Read only what you need, when you need it, applying progressive disclosure.
 
 ## 1. Core Principle
 
@@ -16,77 +16,48 @@ Do not create, edit, delete, move, rewrite, or commit files without explicit aut
 
 Default mode is read-only analysis and proposal mode.
 
-Before approval, agents may:
+Before approval, agents may read files, inspect repository state, run non-destructive checks, summarize findings, and propose a plan.
 
-- Read files.
-- Inspect repository state.
-- Run non-destructive checks.
-- Summarize findings.
-- Propose a plan.
+Before approval, agents must not modify code, documentation, progress files, feature indexes, specs, configuration, tests, or commits.
 
-Before approval, agents must not:
+File changes are allowed only when the user clearly authorizes the exact change scope.
 
-- Modify code.
-- Modify documentation.
-- Modify progress files.
-- Modify feature indexes.
-- Modify specs.
-- Modify configuration.
-- Modify tests.
-- Commit changes.
-
-File changes are allowed only when the user clearly authorizes the exact change scope, for example:
-
-```text
-/implement
-implement this feature
-you may modify these files
-apply the proposed patch
-I approve these file changes
-update this documentation file
-```
-
-If the agent says it is waiting for confirmation, it must stop all write actions until the user responds.
+If an agent says it is waiting for confirmation, it must stop all write actions until the user responds.
 
 ## 2. Agent Compatibility
 
-This repository does not depend on a specific AI provider.
+This repository is optimized for OpenCode while keeping the process provider-neutral.
 
-Neutral role contracts live in:
-
-```text
-.agents/roles/
-```
-
-Tool-specific adapters live in:
+Official agent contracts live in:
 
 ```text
 .opencode/agents/
-.opencode/commands/
-.agents/prompts/opencode/
 ```
 
-Important rule:
+OpenCode slash commands live in:
 
 ```text
-.agents/roles/ is the source of truth.
+.opencode/commands/
 ```
 
-No OpenCode adapter may contradict the contracts in `.agents/roles/`.
+`.opencode/agents/` is the source of truth for agent behavior in this template.
 
 ## 3. Before Starting
 
 Before proposing or performing work, the agent must:
 
-1. Read `progress/current.md`.
+1. Read `progress/STATUS.md`.
 2. Read `features/index.json`.
-3. If there is an active feature, read `progress/features/<FEATURE_ID_SLUG>.md`.
+3. If there is an active feature, read `progress/<FEATURE_ID_SLUG>-log.md`.
 4. Read `docs/workflow.md` before any SDD work.
-5. Read only the documentation needed for the current task.
-6. Confirm that no other feature is in progress.
-7. Confirm whether the requested task is analysis, documentation, specification, review, or implementation.
-8. Verify that explicit authorization exists before modifying any file.
-9. Confirm whether the current workspace exposes a Git root before making repository changes.
+5. Read `docs/index.md` to decide which detailed docs apply.
+6. Read `CONTEXT.md` for project summary.
+7. Read only the detailed docs needed for the current task.
+8. Read `docs/decisions.md` when direction is ambiguous.
+9. Confirm that no other feature is in progress.
+10. Confirm whether the requested task is analysis, documentation, specification, review, testing, refinement, or implementation.
+11. Verify that explicit authorization exists before modifying any file.
+12. Confirm whether the current workspace exposes a Git root before making repository changes.
 
 If required documentation is missing, propose the missing documentation first. Create it only after explicit approval.
 
@@ -96,30 +67,27 @@ If business rules, security rules, data rules, payments, migration, or permissio
 
 | Path | Purpose | When to read |
 |---|---|---|
-| `docs/index.md` | Documentation index | Always when starting |
-| `docs/project-overview.md` | Product context, objective, and scope | When understanding the product |
-| `docs/domain-model.md` | Domain entities and business rules | Before business logic |
-| `docs/data-model.md` | Data model and persistence rules | Before database work |
-| `docs/architecture.md` | Architecture contracts and boundaries | Before implementation |
-| `docs/api-contracts.md` | API conventions and endpoint contracts | Before API work |
-| `docs/ui-system.md` | UX and UI conventions | Before UI work |
-| `docs/security.md` | Security, privacy, permissions | Before sensitive work |
-| `docs/testing.md` | Testing and verification strategy | Before declaring completion |
-| `docs/environment.md` | Local setup and commands | When setup or commands are needed |
-| `docs/workflow.md` | SDD lifecycle and AI rules | Before orchestration |
-| `docs/adaptation.md` | Template adaptation rules | During setup or when project config is incomplete |
-| `docs/quality-gates.md` | Light, standard, and critical flow rules | Before choosing workflow intensity |
-| `docs/decisions/` | Approved decisions | When direction is ambiguous |
+| `CONTEXT.md` | Executive project summary and documentation map | Starting, onboarding, or checking setup completeness |
+| `docs/index.md` | Documentation routing map | Before choosing which detailed docs to read |
+| `docs/project.md` | Product objective, users, scope, and feature areas | Product behavior, scope, UX intent, or roadmap |
+| `docs/domain.md` | Domain concepts, terminology, and business rules | Business rules or domain-sensitive implementation |
+| `docs/data.md` | Data model, constraints, migrations, seeds, and imports | Database, persistence, migration, or reports |
+| `docs/architecture.md` | Technical boundaries, stack, modules, and dependency rules | Implementation, refactors, or architecture decisions |
+| `docs/api.md` | API conventions and contracts | Endpoints, clients, integrations, or API tests |
+| `docs/ui.md` | UI system, accessibility, responsive behavior, states, and forms | Frontend, forms, or browser testing |
+| `docs/security.md` | Security, privacy, permissions, uploads, secrets, and logging | Auth, permissions, private data, payments, or uploads |
+| `docs/environment.md` | Local setup, services, variables, runtime versions, and commands | Setup, CI, failing commands, or onboarding |
+| `docs/testing.md` | Test strategy, evidence, verification, and browser testing | Before marking implemented, tested, reviewed, or done |
+| `docs/workflow.md` | Lifecycle, quality gates, adaptive setup, and AI work rules | Before orchestration |
+| `docs/decisions.md` | Approved technical and product decisions | When direction is ambiguous |
 | `features/index.json` | Feature list and state | Always when starting |
-| `features/<FEATURE_ID_SLUG>/` | Feature specification | Before implementing that feature |
-| `progress/current.md` | Live global state | Always when starting |
-| `progress/history.md` | Append-only historical log | When history is needed |
-| `progress/features/` | Feature-specific progress | Whenever a feature is active |
-| `.agents/roles/` | Neutral agent contracts | When executing a role |
-| `.opencode/agents/` | OpenCode agent adapters | When using OpenCode agents |
-| `.opencode/commands/` | OpenCode slash commands | When using OpenCode commands |
+| `features/<FEATURE_ID_SLUG>.md` | Complete feature specification | Before implementing that feature |
+| `progress/STATUS.md` | Live global progress and history | Always when starting |
+| `progress/<FEATURE_ID_SLUG>-log.md` | Feature-specific progress, evidence, and review notes | Whenever a feature is active |
+| `.opencode/agents/` | Agent contracts | When executing a role |
+| `.opencode/commands/` | OpenCode slash command procedures | When using OpenCode commands |
 | `CHECKPOINTS.md` | Objective final validation criteria | Before closing a feature |
-| `scripts/verify.sh` | Project verification entrypoint | Before marking implemented/tested/reviewed/done |
+| `scripts/verify.sh` | Harness and project verification entrypoint | Before marking tested, reviewed, or done |
 | `harness.config.json` | Project-specific Harness configuration | After setup, before specs or implementation |
 | `harness.config.example.json` | Reusable config template | During setup |
 
@@ -154,16 +122,7 @@ Default mode. The agent may inspect, analyze, and report. No files may be change
 
 ### proposed_changes
 
-The agent may present:
-
-- Exact files it wants to change.
-- Reason for each change.
-- Change type: additive, partial edit, move, delete, full rewrite.
-- Risks.
-- Validation plan.
-- Rollback plan.
-
-No files may be changed yet.
+The agent may present exact file changes, reasons, risks, validation, and rollback. No files may be changed yet.
 
 ### approved_writes
 
@@ -178,11 +137,11 @@ Protected files may be edited only after explicit approval:
 ```text
 AGENTS.md
 CHECKPOINTS.md
+CONTEXT.md
 docs/
 features/index.json
-features/<FEATURE_ID_SLUG>/
+features/<FEATURE_ID_SLUG>.md
 progress/
-.agents/
 .opencode/
 opencode.jsonc
 scripts/verify.sh
@@ -198,18 +157,14 @@ Every SDD feature follows this lifecycle:
 pending -> spec_ready -> approved -> in_progress -> implemented -> tested -> completion_checked -> code_refined -> tested -> completion_checked -> reviewed -> done
 ```
 
-See `docs/workflow.md` for details.
-
-Before implementation, choose the appropriate quality gate from `docs/quality-gates.md`.
-
-Project-specific technology, commands, and model choices belong in `harness.config.json` and project docs. Do not hardcode stack-specific rules into reusable role contracts.
-
 Allowed exceptional states:
 
 ```text
 blocked
 cancelled
 ```
+
+See `docs/workflow.md` for details.
 
 ## 9. Truth Priority
 

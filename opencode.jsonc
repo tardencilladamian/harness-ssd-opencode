@@ -2,11 +2,9 @@
   "$schema": "https://opencode.ai/config.json",
   "instructions": [
     "AGENTS.md",
+    "docs/index.md",
     "docs/workflow.md",
-    "docs/quality-gates.md",
-    "docs/adaptation.md",
-    "docs/testing.md",
-    "docs/security.md"
+    "CONTEXT.md"
   ],
   "permission": {
     "edit": "ask",

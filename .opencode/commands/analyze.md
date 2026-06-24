@@ -12,9 +12,11 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/architect.md`
+- `.opencode/agents/architect.md`
 - `docs/index.md`
-- Relevant project docs
+- `CONTEXT.md`
+- `docs/decisions.md`
+- Relevant granular docs for the question
 
 Rules:
 

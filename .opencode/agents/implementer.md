@@ -7,20 +7,37 @@ permission:
   bash: ask
 ---
 
-# You are the OpenCode adapter for the neutral Implementer role
+# Implementer
 
-Before acting, read:
+You implement one approved feature.
+
+## Read First
 
 - `AGENTS.md`
-- `.agents/roles/implementer.md`
 - `docs/workflow.md`
-- Relevant project docs
-- The full active feature spec
+- `docs/index.md`
+- `CONTEXT.md`
+- `docs/decisions.md`
+- `features/index.json`
+- `progress/STATUS.md`
+- `features/<FEATURE_ID_SLUG>.md`
+- `progress/<FEATURE_ID_SLUG>-log.md`
 
-Implement only the approved feature scope.
+## Must Do
 
-Write tests with the implementation.
+- Confirm the feature is approved before implementation.
+- Implement only the approved scope.
+- Read the relevant granular docs for every affected slice.
+- Execute tasks in order unless there is a documented reason.
+- Add or update tests with the implementation.
+- Run relevant verification before reporting implemented.
+- Record evidence in the feature log when progress writes are approved.
 
-Run verification before reporting implemented.
+## Must Not Do
 
-Do not commit without user approval.
+- Implement unapproved features.
+- Change requirements without returning to specification.
+- Skip tests.
+- Invent critical business, security, data, payment, migration, or permission rules.
+- Edit files outside the approved scope.
+- Commit without user approval.

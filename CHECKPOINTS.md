@@ -5,32 +5,41 @@ Use this checklist before marking a feature as `done`.
 ## C1 - Harness Structure
 
 - [ ] `AGENTS.md` exists and defines the read-only default.
+- [ ] `CONTEXT.md` exists.
 - [ ] `features/index.json` exists and is valid JSON.
-- [ ] `progress/current.md` exists.
+- [ ] `progress/STATUS.md` exists.
+- [ ] `docs/index.md` exists.
+- [ ] `docs/project.md` exists.
+- [ ] `docs/domain.md` exists.
+- [ ] `docs/data.md` exists.
+- [ ] `docs/architecture.md` exists.
+- [ ] `docs/api.md` exists.
+- [ ] `docs/ui.md` exists.
+- [ ] `docs/security.md` exists.
+- [ ] `docs/environment.md` exists.
+- [ ] `docs/testing.md` exists.
 - [ ] `docs/workflow.md` exists.
-- [ ] `docs/quality-gates.md` exists.
-- [ ] `docs/adaptation.md` exists.
+- [ ] `docs/decisions.md` exists.
 - [ ] `CHECKPOINTS.md` exists.
 - [ ] `harness.config.example.json` exists.
-- [ ] Neutral roles exist in `.agents/roles/`.
-- [ ] OpenCode adapters exist in `.opencode/`.
-- [ ] `scripts/verify.sh` exists and passes.
-- [ ] Project-specific checks are configured in `scripts/verify-project.sh` when applicable.
+- [ ] Agent contracts exist in `.opencode/agents/`.
+- [ ] OpenCode commands exist in `.opencode/commands/`.
+- [ ] `scripts/verify.sh --harness` passes.
+- [ ] Project-specific checks are configured in `scripts/verify.sh --project` when applicable.
 
 ## C2 - State Coherence
 
 - [ ] At most one feature is `in_progress`.
-- [ ] The active feature in `features/index.json` matches `progress/current.md`.
-- [ ] The active feature has a progress file in `progress/features/`.
+- [ ] The active feature in `features/index.json` matches `progress/STATUS.md`.
+- [ ] The active feature has a log file at `progress/<FEATURE_ID_SLUG>-log.md`.
 - [ ] No feature skipped required lifecycle states.
 - [ ] Cancelled or blocked features include a documented reason.
 - [ ] Feature dependencies are satisfied before implementation.
 
 ## C3 - Specification Quality
 
-- [ ] `requirements.md` exists.
-- [ ] `design.md` exists.
-- [ ] `tasks.md` exists.
+- [ ] `features/<FEATURE_ID_SLUG>.md` exists.
+- [ ] The feature file has `## Requirements`, `## Design`, and `## Tasks`.
 - [ ] Requirements are numbered with stable IDs.
 - [ ] Requirements are verifiable.
 - [ ] Out-of-scope items are explicit.
@@ -65,7 +74,7 @@ Use this checklist before marking a feature as `done`.
 - [ ] Permission/security behavior verified where applicable.
 - [ ] Persistence behavior verified where applicable.
 - [ ] Requirement-to-test traceability exists.
-- [ ] Evidence is recorded in the feature progress file or feature evidence folder.
+- [ ] Evidence is recorded in `progress/<FEATURE_ID_SLUG>-log.md`.
 
 ## C6 - Review
 
@@ -77,16 +86,14 @@ Use this checklist before marking a feature as `done`.
 - [ ] Reviewer inspected architecture compliance.
 - [ ] Reviewer inspected security and privacy.
 - [ ] Reviewer inspected tests and verification output.
-- [ ] Reviewer recorded result in the feature progress file or review file.
+- [ ] Reviewer recorded result in the feature log.
 
 ## C7 - Session Closure
 
-- [ ] `progress/current.md` updated.
-- [ ] `progress/features/<FEATURE_ID_SLUG>.md` updated.
-- [ ] `progress/history.md` appended if approved.
-- [ ] Session log added to `progress/sessions/` when useful and approved.
-- [ ] `git status` reviewed.
-- [ ] `git diff` reviewed.
+- [ ] `progress/STATUS.md` updated.
+- [ ] `progress/<FEATURE_ID_SLUG>-log.md` updated when a feature was active.
+- [ ] `git status` reviewed when Git is available.
+- [ ] `git diff` reviewed when Git is available.
 - [ ] Commit approved by user before committing.
 
 ## C8 - Template Instantiation
@@ -94,7 +101,8 @@ Use this checklist before marking a feature as `done`.
 - [ ] Project name placeholders were replaced.
 - [ ] Stack placeholders were replaced.
 - [ ] Domain/data/API/UI/security placeholders were reviewed.
+- [ ] Granular docs were either completed or explicitly marked not applicable.
 - [ ] `F-00` is used as the real project foundation feature or was intentionally replaced.
 - [ ] `harness.config.json` was created from `harness.config.example.json` when the real project starts.
-- [ ] `features/_template/` exists for future features.
+- [ ] `features/_template.md` exists for future features.
 - [ ] First real project feature is defined.

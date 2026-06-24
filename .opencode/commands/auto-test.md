@@ -12,41 +12,32 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/auto-test.md`
+- `.opencode/agents/auto-test.md`
+- `docs/workflow.md`
+- `docs/index.md`
 - `docs/testing.md`
-- `docs/quality-gates.md`
-- `docs/environment.md`
+- `CONTEXT.md`
 - `harness.config.json` when it exists
-- Relevant feature spec files
-- Relevant feature progress file
+- `features/<FEATURE_ID_SLUG>.md`
+- `progress/<FEATURE_ID_SLUG>-log.md`
 
 Rules:
 
 - Do not implement fixes.
 - Do not edit application code.
 - Do not approve the feature.
-- Run project verification commands.
+- Run `bash scripts/verify.sh --project`.
 - Run feature-specific tests.
 - Run affected regression tests.
 - Open the browser and perform real UI checks when applicable and tooling is available.
 - When Playwright is available, browser tests must run in headed mode using `--headed`.
 - Prefer the project command and add `--headed` when needed, for example `pnpm exec playwright test --headed`.
 - Test happy paths, validation errors, permissions, persistence, and public/private visibility when applicable.
-- Record exact commands, outcomes, evidence, failures, and reproduction steps.
-- Store evidence in the feature progress file or `features/<FEATURE_ID_SLUG>/evidence/`.
+- Record exact commands, outcomes, evidence, failures, and reproduction steps in the feature log when writes are approved.
 
-Return:
-
-```text
-auto_test_passed -> progress/features/<FEATURE_ID_SLUG>.md
-```
-
-or:
+Return one of:
 
 ```text
-auto_test_failed -> progress/features/<FEATURE_ID_SLUG>.md
+auto_test_passed -> progress/<FEATURE_ID_SLUG>-log.md
+auto_test_failed -> progress/<FEATURE_ID_SLUG>-log.md
 ```
-
-Model recommendation:
-
-- Use a cost-efficient model for normal Auto Test runs. Escalate only when failures are ambiguous or repeatedly unexplained.

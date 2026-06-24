@@ -12,15 +12,15 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/leader.md`
+- `.opencode/agents/leader.md`
 - `docs/workflow.md`
-- `docs/quality-gates.md`
 - `CHECKPOINTS.md`
+- `progress/STATUS.md`
 
 Rules:
 
 - Do not commit automatically.
-- Do not edit files unless progress/session-log updates are explicitly approved.
+- Do not edit files unless progress updates are explicitly approved.
 - Summarize current feature status.
 - Summarize completed work and pending work.
 - Summarize verification commands and results.
@@ -32,12 +32,6 @@ Rules:
 Optional approved outputs:
 
 ```text
-progress/current.md
-progress/features/<FEATURE_ID_SLUG>.md
-progress/history.md
-progress/sessions/<DATE>-<FEATURE_ID>.md
+progress/STATUS.md
+progress/<FEATURE_ID_SLUG>-log.md
 ```
-
-Model recommendation:
-
-- Use a cost-efficient model for routine session closure.

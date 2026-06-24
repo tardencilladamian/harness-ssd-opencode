@@ -28,6 +28,8 @@
       "slug": "project-foundation",
       "title": "Project foundation",
       "description": "Adapt the reusable Harness template into the real project foundation.",
+      "file": "features/F-00-project-foundation.md",
+      "log": "progress/F-00-project-foundation-log.md",
       "priority": "P0",
       "work_mode": "foundation",
       "sdd": true,

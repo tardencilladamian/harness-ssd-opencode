@@ -12,21 +12,19 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/leader.md`
+- `.opencode/agents/leader.md`
 - `docs/workflow.md`
-- `docs/quality-gates.md`
+- `features/index.json`
+- `progress/STATUS.md`
 
 Rules:
 
 - Confirm the user explicitly approved the spec.
-- Confirm `requirements.md`, `design.md`, and `tasks.md` exist.
+- Confirm `features/<FEATURE_ID_SLUG>.md` exists.
+- Confirm the file has `## Requirements`, `## Design`, and `## Tasks`.
 - Confirm the feature is currently `spec_ready`.
 - Confirm the selected quality gate is documented or propose one.
 - Confirm dependencies are declared in `features/index.json`.
 - If approved, propose changing status to `approved`.
 - Do not implement.
 - If a write is required, confirm the approved write scope before editing.
-
-Model recommendation:
-
-- Use a high-capability model when the spec is complex or critical.

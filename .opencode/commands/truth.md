@@ -3,22 +3,29 @@ description: Read-only repository truth analysis
 agent: leader
 ---
 
-# Run a read-only truth analysis for this repository.
+# Run a read-only truth analysis for this repository
 
-Follow `AGENTS.md` and `.agents/roles/leader.md`.
+Follow:
+
+- `AGENTS.md`
+- `.opencode/agents/leader.md`
+- `docs/workflow.md`
+- `docs/index.md`
+- `CONTEXT.md`
+- `docs/decisions.md`
 
 Rules:
 
 - Do not edit files.
 - Do not change feature status.
 - Do not commit.
-- Read `progress/current.md`.
+- Read `progress/STATUS.md`.
 - Read `features/index.json`.
 - Read `docs/index.md`.
-- Read `docs/adaptation.md` when the project still has placeholders or no `harness.config.json`.
-- Read `docs/quality-gates.md` when evaluating the next feature path.
+- Read `harness.config.json` when it exists.
+- Read active feature spec and log when a feature is active.
 - Read only additional docs needed for the current task.
-- Report the active feature, current state, blockers, risks, and next valid action.
+- Report active feature, current state, blockers, risks, and next valid action.
 - Report whether the project is still in template mode.
 - Report whether feature dependencies or quality-gate metadata are missing.
 - If F-00 is still `pending`, recommend completing F-00 before product features.
@@ -28,7 +35,3 @@ If arguments are provided, focus the analysis on:
 ```text
 $ARGUMENTS
 ```
-
-Model recommendation:
-
-- Use a high-capability model for `/truth` when project state or next steps are ambiguous.

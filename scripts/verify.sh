@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+MODE="${1:---all}"
 STRICT_PLACEHOLDERS="${HARNESS_STRICT_PLACEHOLDERS:-0}"
 EXIT_CODE=0
 
@@ -38,86 +39,94 @@ require_dir_with_md() {
   fi
 }
 
-echo "== Harness verification =="
+check_placeholders() {
+  echo ""
+  echo "== Template placeholder detection =="
 
-echo ""
-echo "== C1: Harness structure =="
+  local placeholders=(
+    "PROJECT_NAME"
+    "YYYY-MM-DD"
+    "Replace with"
+    "ExampleEntity"
+    "Placeholder"
+    "User type 1"
+    "Core feature area"
+    "Out-of-scope item"
+    "Short project description"
+  )
 
-require_file "AGENTS.md"
-require_file "CHECKPOINTS.md"
-require_file "features/index.json"
-require_file "progress/current.md"
-require_file "progress/history.md"
-require_file "docs/index.md"
-require_file "docs/workflow.md"
-require_file "docs/adaptation.md"
-require_file "docs/quality-gates.md"
-require_file "docs/testing.md"
-require_file "docs/security.md"
-require_file "harness.config.example.json"
-require_file "scripts/verify.sh"
-require_file "scripts/new-feature.sh"
-require_dir_with_md ".agents/roles"
-require_dir_with_md ".opencode/agents"
-require_dir_with_md ".opencode/commands"
-require_dir_with_md "features/_template"
-require_dir_with_md "progress/sessions"
+  local found=0
+  for placeholder in "${placeholders[@]}"; do
+    matches="$(
+      grep -RIl \
+        --exclude-dir=.git \
+        --exclude='*.zip' \
+        --exclude='README.md' \
+        --exclude='harness.config.example.json' \
+        --exclude='features/_template.md' \
+        "$placeholder" CONTEXT.md docs features progress 2>/dev/null \
+        || true
+    )"
+    if [ -n "$matches" ]; then
+      found=1
+      warn "Unreplaced placeholder found: '$placeholder'"
+      printf "%s\n" "$matches" | sed 's/^/  - /'
+    fi
+  done
 
-echo ""
-echo "== Template placeholder detection =="
-
-PLACEHOLDERS=(
-  "PROJECT_NAME"
-  "YYYY-MM-DD"
-  "Replace with"
-  "ExampleEntity"
-  "Placeholder"
-  "User type 1"
-  "Core feature area"
-  "Out-of-scope item"
-  "Short project description"
-)
-
-PLACEHOLDER_FOUND=0
-for placeholder in "${PLACEHOLDERS[@]}"; do
-  matches="$(
-    grep -RIl \
-      --exclude-dir=.git \
-      --exclude-dir=_template \
-      --exclude='*.zip' \
-      --exclude='README.md' \
-      --exclude='harness.config.example.json' \
-      "$placeholder" docs features progress 2>/dev/null \
-      | grep -v '^docs/decisions/README.md$' \
-      || true
-  )"
-  if [ -n "$matches" ]; then
-    PLACEHOLDER_FOUND=1
-    warn "Unreplaced placeholder found: '$placeholder'"
-    printf "%s\n" "$matches" | sed 's/^/  - /'
+  if [ "$found" -eq 0 ]; then
+    ok "No common template placeholders found"
+  elif [ "$STRICT_PLACEHOLDERS" = "1" ]; then
+    fail "Template placeholders remain and HARNESS_STRICT_PLACEHOLDERS=1"
+  else
+    warn "Template placeholders remain. This is allowed unless HARNESS_STRICT_PLACEHOLDERS=1"
   fi
-done
+}
 
-if [ "$PLACEHOLDER_FOUND" -eq 0 ]; then
-  ok "No common template placeholders found"
-elif [ "$STRICT_PLACEHOLDERS" = "1" ]; then
-  fail "Template placeholders remain and HARNESS_STRICT_PLACEHOLDERS=1"
-else
-  warn "Template placeholders remain. This is allowed unless HARNESS_STRICT_PLACEHOLDERS=1"
-fi
+verify_harness() {
+  echo "== Harness verification =="
 
-echo ""
-echo "== C2: Feature state coherence =="
+  echo ""
+  echo "== C1: Harness structure =="
 
-if command -v python3 >/dev/null 2>&1; then
-  if python3 - <<'PY'
+  require_file "AGENTS.md"
+  require_file "CHECKPOINTS.md"
+  require_file "CONTEXT.md"
+  require_file "features/index.json"
+  require_file "features/_template.md"
+  require_file "progress/STATUS.md"
+  require_file "docs/index.md"
+  require_file "docs/workflow.md"
+  require_file "docs/project.md"
+  require_file "docs/domain.md"
+  require_file "docs/data.md"
+  require_file "docs/architecture.md"
+  require_file "docs/api.md"
+  require_file "docs/ui.md"
+  require_file "docs/security.md"
+  require_file "docs/environment.md"
+  require_file "docs/testing.md"
+  require_file "docs/decisions.md"
+  require_file "harness.config.example.json"
+  require_file "scripts/verify.sh"
+  require_file "scripts/new-feature.sh"
+  require_dir_with_md ".opencode/agents"
+  require_dir_with_md ".opencode/commands"
+
+  check_placeholders
+
+  echo ""
+  echo "== C2: Feature state coherence =="
+
+  if command -v python3 >/dev/null 2>&1; then
+    if python3 - <<'PY'
 import json
 import re
 from pathlib import Path
 
 root = Path(".")
 index_path = root / "features" / "index.json"
-current_path = root / "progress" / "current.md"
+status_path = root / "progress" / "STATUS.md"
 
 data = json.loads(index_path.read_text(encoding="utf-8"))
 valid = set(data.get("rules", {}).get("valid_status", [])) or {
@@ -152,11 +161,9 @@ if len(in_progress) > 1:
     raise SystemExit("[FAIL] More than one feature is in_progress")
 
 requires_spec = {"spec_ready", "approved", "in_progress", "implemented", "tested", "completion_checked", "code_refined", "reviewed", "done"}
-requires_progress = {"spec_ready", "approved", "in_progress", "implemented", "tested", "completion_checked", "code_refined", "reviewed", "done", "blocked"}
-requires_review = {"reviewed", "done"}
-
+requires_log = {"spec_ready", "approved", "in_progress", "implemented", "tested", "completion_checked", "code_refined", "reviewed", "done", "blocked"}
 task_pattern = re.compile(r"^- \[( |x|X)\] T\d+", re.MULTILINE)
-requirement_pattern = re.compile(r"^## R\d+", re.MULTILINE)
+requirement_pattern = re.compile(r"^### R\d+", re.MULTILINE)
 
 for feature in features:
     feature_id = feature.get("id")
@@ -187,54 +194,50 @@ for feature in features:
     if slice_data and not isinstance(slice_data, dict):
         raise SystemExit(f"[FAIL] {feature_id} slice must be an object")
 
-    feature_dir = root / "features" / f"{feature_id}-{slug}"
-    progress_file = root / "progress" / "features" / f"{feature_id}-{slug}.md"
+    default_feature_file = root / "features" / f"{feature_id}-{slug}.md"
+    feature_file = root / feature.get("file", str(default_feature_file))
+    default_log_file = root / "progress" / f"{feature_id}-{slug}-log.md"
+    log_file = root / feature.get("log", str(default_log_file))
 
     if sdd and status in requires_spec:
-        required = ["requirements.md", "design.md", "tasks.md"]
-        missing = [name for name in required if not (feature_dir / name).is_file()]
-        if missing:
-            raise SystemExit(f"[FAIL] Missing spec files for {feature_id}: {missing}")
+        if not feature_file.is_file():
+            raise SystemExit(f"[FAIL] Missing spec file for {feature_id}: {feature_file}")
+        spec = feature_file.read_text(encoding="utf-8")
+        for heading in ["## Requirements", "## Design", "## Tasks"]:
+            if heading not in spec:
+                raise SystemExit(f"[FAIL] {feature_id} missing section: {heading}")
+        if not requirement_pattern.search(spec):
+            raise SystemExit(f"[FAIL] {feature_id} has no R<n> requirement headings")
+        if not task_pattern.search(spec):
+            raise SystemExit(f"[FAIL] {feature_id} has no T<n> checklist items")
 
-        requirements = (feature_dir / "requirements.md").read_text(encoding="utf-8")
-        tasks = (feature_dir / "tasks.md").read_text(encoding="utf-8")
-        if not requirement_pattern.search(requirements):
-            raise SystemExit(f"[FAIL] {feature_id} requirements.md has no R<n> headings")
-        if not task_pattern.search(tasks):
-            raise SystemExit(f"[FAIL] {feature_id} tasks.md has no T<n> checklist items")
-
-    if status in requires_progress and not progress_file.is_file():
-        raise SystemExit(f"[FAIL] Missing progress file for {feature_id}: {progress_file}")
-
-    if status in requires_review:
-        review_file = feature_dir / "review.md"
-        if not review_file.is_file():
-            raise SystemExit(f"[FAIL] Missing review.md for {feature_id} in {status}")
+    if status in requires_log and not log_file.is_file():
+        raise SystemExit(f"[FAIL] Missing feature log for {feature_id}: {log_file}")
 
 if in_progress:
-    current = current_path.read_text(encoding="utf-8")
+    current = status_path.read_text(encoding="utf-8")
     active = in_progress[0]
     expected_tokens = [active.get("id", ""), active.get("slug", "")]
     if not any(token and token in current for token in expected_tokens):
-        raise SystemExit("[FAIL] progress/current.md does not mention the in_progress feature")
+        raise SystemExit("[FAIL] progress/STATUS.md does not mention the in_progress feature")
 
 print("[OK] features/index.json and progress state are coherent")
 PY
-  then
-    ok "Feature state coherence passed"
+    then
+      ok "Feature state coherence passed"
+    else
+      EXIT_CODE=1
+    fi
   else
-    EXIT_CODE=1
+    warn "python3 not found; skipping JSON and feature coherence validation"
   fi
-else
-  warn "python3 not found; skipping JSON and feature coherence validation"
-fi
 
-echo ""
-echo "== C3: Adaptive config =="
+  echo ""
+  echo "== C3: Adaptive config =="
 
-if [ -f "harness.config.json" ]; then
-  if command -v python3 >/dev/null 2>&1; then
-    if python3 - <<'PY'
+  if [ -f "harness.config.json" ]; then
+    if command -v python3 >/dev/null 2>&1; then
+      if python3 - <<'PY'
 import json
 from pathlib import Path
 
@@ -247,39 +250,57 @@ for key in ["project", "models", "stack", "verification", "quality_gates"]:
 
 print("[OK] harness.config.json has required top-level keys")
 PY
-    then
-      ok "Adaptive config validation passed"
+      then
+        ok "Adaptive config validation passed"
+      else
+        EXIT_CODE=1
+      fi
     else
-      EXIT_CODE=1
+      warn "python3 not found; skipping harness.config.json validation"
     fi
   else
-    warn "python3 not found; skipping harness.config.json validation"
+    warn "harness.config.json not found; copy harness.config.example.json during project setup"
   fi
-else
-  warn "harness.config.json not found; copy harness.config.example.json during project setup"
-fi
+}
 
-echo ""
-echo "== Project-specific verification =="
+verify_project() {
+  echo "== Project-specific verification =="
 
-if [ -f "scripts/verify-project.sh" ]; then
-  if bash scripts/verify-project.sh; then
-    ok "Project-specific verification passed"
+  if [ -f "harness.config.json" ]; then
+    ok "Found harness.config.json"
   else
-    fail "Project-specific verification failed"
+    warn "harness.config.json not found; project checks are not configured yet"
   fi
-else
-  warn "scripts/verify-project.sh not found; skipping project-specific checks"
-  warn "Copy scripts/verify-project.sh.example to scripts/verify-project.sh when your project has real commands"
-fi
+
+  warn "Edit verify_project() in scripts/verify.sh with real stack commands for this project"
+  warn "Examples: pnpm lint, pnpm test, pnpm exec playwright test --headed, pytest, go test ./..."
+}
+
+case "$MODE" in
+  --harness)
+    verify_harness
+    ;;
+  --project)
+    verify_project
+    ;;
+  --all|"")
+    verify_harness
+    echo ""
+    verify_project
+    ;;
+  *)
+    fail "Unknown mode: $MODE"
+    printf "Usage: bash scripts/verify.sh [--harness|--project|--all]\n"
+    ;;
+esac
 
 echo ""
 echo "== Summary =="
 
 if [ "$EXIT_CODE" -eq 0 ]; then
-  ok "Harness verification completed"
+  ok "Verification completed"
 else
-  fail "Harness verification failed"
+  fail "Verification failed"
 fi
 
 exit "$EXIT_CODE"

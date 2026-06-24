@@ -1,47 +1,62 @@
 # Security
 
-## Purpose
+This file defines security, privacy, permission, upload, secret, logging, and payment rules.
 
-Define security, privacy, permission, and sensitive data rules.
+## Authentication
 
-## Hard Rules
+- Replace with auth strategy.
+- Password rules:
+- Session/token rules:
+- Social login providers:
 
-- Do not commit secrets.
-- Do not expose private data in logs.
-- Do not store payment card data unless explicitly approved and compliant.
-- Do not rely only on frontend permission checks.
-- Do not make private files publicly accessible by direct URL.
-- Do not weaken authentication or authorization without approval.
+## Authorization
+
+- Define roles.
+- Define resource ownership.
+- Define admin-only actions.
+- Define public/private visibility.
+
+## Sensitive Data
+
+- List sensitive fields.
+- Do not log sensitive data.
+- Do not expose private data through public URLs.
+- Do not store payment card data unless the approved provider and compliance scope explicitly allow it.
+
+## Uploads
+
+- Storage provider:
+- Public/private policy:
+- File type limits:
+- Size limits:
+- Virus/malware scanning:
+- Signed URL rules:
 
 ## Secrets
 
-Secrets must live in environment variables or approved secret storage.
+- Secrets must live in environment variables or secret storage.
+- Do not commit secrets.
+- Do not print secrets in logs.
 
-Never commit:
+## Audit / Logging
 
-- API keys.
-- Tokens.
-- Passwords.
-- Private keys.
-- Production database URLs.
+- Log security-relevant actions.
+- Avoid storing sensitive payloads.
+- Include enough context to debug without exposing private data.
 
-## Permissions
+## Security Review Triggers
 
-Every protected action must define:
-
-- Who can perform it.
-- What data they can access.
-- What data they can modify.
-- What audit trail is required.
-
-## Security Review
-
-Every feature review must check:
+Use the critical quality gate for:
 
 - Authentication.
 - Authorization.
-- Input validation.
-- Sensitive data exposure.
-- Logging.
-- Storage access.
-- Public/private visibility.
+- Payments.
+- Private data.
+- Uploads.
+- Public visibility.
+- Data migration.
+- Admin actions.
+
+## Open Questions
+
+- Replace with unresolved security questions.

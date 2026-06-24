@@ -12,13 +12,13 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/code-refiner.md`
-- `docs/architecture.md`
-- `docs/security.md`
-- `docs/testing.md`
-- `docs/quality-gates.md`
-- Relevant feature spec files
-- Relevant feature progress file
+- `.opencode/agents/code-refiner.md`
+- `docs/workflow.md`
+- `docs/index.md`
+- `CONTEXT.md`
+- Relevant granular docs for the affected code
+- `features/<FEATURE_ID_SLUG>.md`
+- `progress/<FEATURE_ID_SLUG>-log.md`
 - Auto Test evidence
 - Completion Checker evidence
 
@@ -35,18 +35,9 @@ Rules:
 - After refactoring, require Auto Test and Completion Checker again before Reviewer.
 - For light-flow features, recommend skipping refinement unless there is obvious maintainability or safety value.
 
-Return:
+Return one of:
 
 ```text
-code_refined -> progress/features/<FEATURE_ID_SLUG>.md
+code_refined -> progress/<FEATURE_ID_SLUG>-log.md
+refactor_not_recommended -> progress/<FEATURE_ID_SLUG>-log.md
 ```
-
-or:
-
-```text
-refactor_not_recommended -> progress/features/<FEATURE_ID_SLUG>.md
-```
-
-Model recommendation:
-
-- Use a stronger model for critical refactors. Use a cost-efficient model for small, behavior-preserving cleanup only when the refactor plan is explicit.

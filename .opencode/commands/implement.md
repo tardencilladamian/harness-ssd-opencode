@@ -12,12 +12,14 @@ $ARGUMENTS
 Follow:
 
 - `AGENTS.md`
-- `.agents/roles/implementer.md`
+- `.opencode/agents/implementer.md`
 - `docs/workflow.md`
-- `docs/quality-gates.md`
+- `docs/index.md`
+- `CONTEXT.md`
+- Relevant granular docs for the affected slices
 - `harness.config.json` when it exists
-- Relevant project docs
-- The complete feature spec
+- `features/<FEATURE_ID_SLUG>.md`
+- `progress/<FEATURE_ID_SLUG>-log.md`
 
 Preconditions:
 
@@ -29,14 +31,11 @@ Preconditions:
 Rules:
 
 - Work on one feature only.
-- Execute `tasks.md` in order.
-- Add/update tests with the implementation.
+- Respect the granular docs for product, domain, data, API, UI, security, environment, and testing.
+- Execute tasks in order.
+- Add or update tests with the implementation.
 - Mark tasks complete only after completion.
-- Run `bash scripts/verify.sh` or the project-specific verification command.
+- Run `bash scripts/verify.sh --all` or the relevant project-specific verification command.
 - Update progress only if progress updates are approved.
 - Do not commit without user approval.
-- If the spec is ambiguous, stop and request clarification instead of inventing a design decision.
-
-Model recommendation:
-
-- Use a cost-efficient model only when the spec is complete and implementation tasks are mechanical.
+- If the spec is ambiguous, stop and request clarification instead of inventing a decision.

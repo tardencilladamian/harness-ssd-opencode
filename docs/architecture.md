@@ -1,56 +1,53 @@
 # Architecture
 
-## Purpose
+This file defines technical boundaries and implementation rules.
 
-Define the technical boundaries agents must respect when implementing features.
+## Stack
 
-## Main Stack
+- Frontend: Replace with frontend stack.
+- Backend: Replace with backend stack.
+- Database: Replace with database.
+- Package manager: Replace with package manager.
+- Test tools: Replace with test tools.
 
-Replace with the project stack:
+## Repository Layout
 
-- Frontend:
-- Backend:
-- Database:
-- Storage:
-- Queue:
-- Testing:
-- Deployment:
+Describe the approved structure after F-00 adapts the template.
 
-## Architecture Principles
+```text
+apps/
+packages/
+database/
+tests/
+```
 
-- Prefer vertical slices over layer-only work.
-- Keep changes scoped to the active feature.
-- Use existing patterns before adding abstractions.
-- Add dependencies only with explicit approval.
-- Keep business logic testable.
-- Keep user-facing behavior traceable to requirements.
+Adjust this layout only with approval.
 
 ## Boundaries
 
-Document project-specific boundaries here:
+- Replace with module boundaries.
+- Define what can import what.
+- Define shared package ownership.
+- Define forbidden shortcuts.
 
-- Where API code lives.
-- Where UI code lives.
-- Where database migrations live.
-- Where domain logic lives.
-- Where shared packages live.
-- Where tests live.
+## Vertical Slice Rule
 
-## Dependency Policy
+Features should be implemented end to end across the needed layers: data, API, UI, tests, security, and docs.
 
-Do not add, remove, or upgrade core dependencies without approval.
+Do not build large horizontal layers without a feature that proves them.
 
-If a dependency is needed, document:
+## Dependency Rules
 
-- Why it is needed.
-- Alternatives considered.
-- Impact on bundle/runtime/security.
-- Validation plan.
+- Do not add dependencies without approval.
+- Prefer existing stack tools.
+- Record major technical decisions in `docs/decisions.md`.
 
-## Anti-Patterns
+## Error Handling
 
-- Broad refactors during feature work.
-- Hidden architecture changes.
-- Business rules embedded only in UI.
-- Database changes without migration and rollback notes.
-- Features marked complete without tests.
+- Define user-facing errors.
+- Define API error format in `docs/api.md`.
+- Define logging and sensitive data rules in `docs/security.md`.
+
+## Open Questions
+
+- Replace with unresolved architecture questions.
